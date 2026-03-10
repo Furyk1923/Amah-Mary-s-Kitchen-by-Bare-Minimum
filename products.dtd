@@ -1,0 +1,9 @@
+<!-- products.dtd - Document Type Definition for products.xml -->
+<!ELEMENT products (product+)>
+<!ELEMENT product (name, description, price, stock, status)>
+<!ATTLIST product id CDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT stock (#PCDATA)>
+<!ELEMENT status (#PCDATA)>

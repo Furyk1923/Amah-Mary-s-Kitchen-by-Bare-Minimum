@@ -42,29 +42,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Amah Mary's Kitchen</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Register</h2>
+<div class="auth-wrapper">
+<div class="auth-box">
+<h2>🍳 Register Account</h2>
 <?php if (!empty($errors)): ?>
-    <ul>
-        <?php foreach ($errors as $e): ?>
-            <li><?php echo htmlspecialchars($e); ?></li>
-        <?php endforeach; ?>
-    </ul>
+    <div class="alert alert-danger">
+    <?php foreach ($errors as $e): ?>
+        <?php echo htmlspecialchars($e); ?><br>
+    <?php endforeach; ?>
+    </div>
 <?php endif; ?>
 <form method="post" action="">
-    <label>Full Name: <input type="text" name="full_name" required></label><br>
-    <label>Username: <input type="text" name="username" required></label><br>
-    <label>Email: <input type="email" name="email"></label><br>
-    <label>Password: <input type="password" name="password" required></label><br>
-    <label>Role: 
+    <label>Full Name <input type="text" name="full_name" required></label>
+    <label>Username <input type="text" name="username" required></label>
+    <label>Email <input type="email" name="email"></label>
+    <label>Password <input type="password" name="password" required></label>
+    <label>Role
         <select name="role">
             <option value="Staff">Staff</option>
             <option value="Admin">Admin</option>
         </select>
-    </label><br>
-    <button type="submit">Register</button>
+    </label>
+    <button type="submit" class="btn btn-primary">Register</button>
 </form>
+<div class="link">Already have an account? <a href="login.php">Login here</a></div>
+</div>
+</div>
 </body>
 </html>

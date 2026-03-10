@@ -48,21 +48,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Amah Mary's Kitchen</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Login</h2>
+<div class="auth-wrapper">
+<div class="auth-box">
+<h2>🍳 Amah Mary's Kitchen</h2>
 <?php if (!empty($errors)): ?>
-    <ul>
-        <?php foreach ($errors as $e): ?>
-            <li><?php echo htmlspecialchars($e); ?></li>
-        <?php endforeach; ?>
-    </ul>
+    <div class="alert alert-danger">
+    <?php foreach ($errors as $e): ?>
+        <?php echo htmlspecialchars($e); ?><br>
+    <?php endforeach; ?>
+    </div>
 <?php endif; ?>
 <form method="post" action="">
-    <label>Username: <input type="text" name="username" required></label><br>
-    <label>Password: <input type="password" name="password" required></label><br>
-    <button type="submit">Login</button>
+    <label>Username <input type="text" name="username" required></label>
+    <label>Password <input type="password" name="password" required></label>
+    <button type="submit" class="btn btn-primary">Login</button>
 </form>
+<div class="link">Don't have an account? <a href="register.php">Register here</a></div>
+</div>
+</div>
 </body>
 </html>

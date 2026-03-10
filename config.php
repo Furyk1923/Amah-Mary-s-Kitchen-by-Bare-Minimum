@@ -8,16 +8,23 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // database credentials
 define('DB_HOST', 'localhost');
-define('DB_USER', 'your_db_user');
-define('DB_PASS', 'your_db_password');
-define('DB_NAME', 'your_db_name');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'amahmarys_db');
 
 // create connection
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // check connection
 if ($mysqli->connect_errno) {
-    // handle error appropriately in production
     die("Database connection failed: " . $mysqli->connect_error);
 }
+
+// ---- SESSION CHECK SNIPPET ----
+// Copy and paste the lines below at the top of any protected page:
+//
+//   require_once 'config.php';
+//   require_once 'auth_check.php';
+//
+// This will redirect unauthenticated users to login.php
 ?>
