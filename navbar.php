@@ -1,21 +1,54 @@
 <?php
-// navbar.php - shared navigation bar (include on every protected page)
+// navbar.php - shared navigation bar matching wireframe design
 $current_page = basename($_SERVER['PHP_SELF']);
+
+// Determine which nav group is active
+$is_home      = in_array($current_page, ['index.php','customers.php','users.php']);
+$is_orders    = in_array($current_page, ['orders.php','order_details.php','delivery.php']);
+$is_inventory = ($current_page === 'products.php');
+$is_reports   = in_array($current_page, ['reports.php','products_xml.php']);
 ?>
-<nav class="navbar">
-    <a class="brand" href="index.php">🍳 Amah Mary's Kitchen</a>
-    <ul class="nav-links">
-        <li><a href="index.php" class="<?= $current_page === 'index.php' ? 'active' : '' ?>">Dashboard</a></li>
-        <li><a href="products.php" class="<?= $current_page === 'products.php' ? 'active' : '' ?>">Products</a></li>
-        <li><a href="customers.php" class="<?= $current_page === 'customers.php' ? 'active' : '' ?>">Customers</a></li>
-        <li><a href="orders.php" class="<?= $current_page === 'orders.php' ? 'active' : '' ?>">Orders</a></li>
-        <li><a href="order_details.php" class="<?= $current_page === 'order_details.php' ? 'active' : '' ?>">Order Details</a></li>
-        <li><a href="delivery.php" class="<?= $current_page === 'delivery.php' ? 'active' : '' ?>">Delivery</a></li>
-        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
-            <li><a href="users.php" class="<?= $current_page === 'users.php' ? 'active' : '' ?>">Users</a></li>
-        <?php endif; ?>
-        <li><a href="products_xml.php" class="<?= $current_page === 'products_xml.php' ? 'active' : '' ?>">XML Report</a></li>
-        <li><a href="logout.php">Logout</a></li>
-    </ul>
-    <span class="user-info">👤 <?= htmlspecialchars($_SESSION['username'] ?? '') ?> (<?= htmlspecialchars($_SESSION['role'] ?? '') ?>)</span>
+<!-- Top dark navbar -->
+<nav class="top-navbar">
+    <div class="top-navbar-brand">
+        <span class="brand-icon"></span>
+        <span>AMAH MARY'S KITCHEN</span>
+    </div>
+    <span class="top-navbar-user">User: <?= htmlspecialchars($_SESSION['username'] ?? '') ?></span>
 </nav>
+<!-- Secondary navigation -->
+<nav class="sec-navbar">
+    <div class="sec-nav-item <?= $is_home ? 'active' : '' ?>">
+        <a href="index.php">Home</a>
+        <span class="nav-arrow">&#9662;</span>
+        <div class="sec-dropdown">
+            <a href="index.php">Dashboard</a>
+            <a href="customers.php">Customers</a>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
+                <a href="users.php">Users</a>
+            <?php endif; ?>
+            <a href="logout.php">Logout</a>
+        </div>
+    </div>
+    <div class="sec-nav-item <?= $is_orders ? 'active' : '' ?>">
+        <a href="orders.php">Orders</a>
+        <span class="nav-arrow">&#9662;</span>
+        <div class="sec-dropdown">
+            <a href="orders.php">Order Management</a>
+            <a href="order_details.php">Order Details</a>
+            <a href="delivery.php">Delivery</a>
+        </div>
+    </div>
+    <div class="sec-nav-item <?= $is_inventory ? 'active' : '' ?>">
+        <a href="products.php"><strong>Inventory</strong></a>
+    </div>
+    <div class="sec-nav-item <?= $is_reports ? 'active' : '' ?>">
+        <a href="reports.php">Reports</a>
+        <span class="nav-arrow">&#9662;</span>
+        <div class="sec-dropdown">
+            <a href="reports.php">Sales Reports</a>
+            <a href="products_xml.php">XML Report</a>
+        </div>
+    </div>
+</nav>
+

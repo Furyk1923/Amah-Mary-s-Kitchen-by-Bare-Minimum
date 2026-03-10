@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_result($user_id, $hash, $role);
             $stmt->fetch();
 
-            if (password_verify($password, $hash)) {
+            if (password_verify($password, $hash ?? '')) {
                 // credentials OK
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $username;
@@ -52,24 +52,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login - Amah Mary's Kitchen</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="auth-wrapper">
-<div class="auth-box">
-<h2>🍳 Amah Mary's Kitchen</h2>
-<?php if (!empty($errors)): ?>
-    <div class="alert alert-danger">
-    <?php foreach ($errors as $e): ?>
-        <?php echo htmlspecialchars($e); ?><br>
-    <?php endforeach; ?>
+<body class="auth-page">
+
+<!-- Top Navbar -->
+<nav class="auth-navbar">
+    <div class="auth-navbar-brand">
+        <span class="brand-icon"></span>
+        <span>AMAH MARY'S KITCHEN</span>
     </div>
-<?php endif; ?>
-<form method="post" action="">
-    <label>Username <input type="text" name="username" required></label>
-    <label>Password <input type="password" name="password" required></label>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
-<div class="link">Don't have an account? <a href="register.php">Register here</a></div>
+    <div class="auth-navbar-links">
+        <a href="register.php" class="auth-nav-btn">Sign up</a>
+        <a href="login.php" class="auth-nav-btn active">Log in</a>
+    </div>
+</nav>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-icon"></div>
+        <h2 class="login-title">AMAH MARY'S KITCHEN</h2>
+
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger">
+            <?php foreach ($errors as $e): ?>
+                <?= htmlspecialchars($e); ?><br>
+            <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_GET['msg']) && $_GET['msg'] === 'registered'): ?>
+            <div class="alert alert-success">Account created! Please log in.</div>
+        <?php endif; ?>
+
+        <form method="post" action="">
+            <div class="login-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Admin" required>
+            </div>
+            <div class="login-field">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    <button type="button" class="toggle-pw" onclick="togglePassword()">👁</button>
+                </div>
+            </div>
+            <a href="#" class="forgot-link">Forgot Password?</a>
+            <button type="submit" class="btn-login">LOG IN</button>
+        </form>
+    </div>
 </div>
-</div>
+
+<script>
+function togglePassword() {
+    var pw = document.getElementById('password');
+    pw.type = pw.type === 'password' ? 'text' : 'password';
+}
+</script>
 </body>
 </html>
