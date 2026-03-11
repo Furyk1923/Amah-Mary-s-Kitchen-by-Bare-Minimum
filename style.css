@@ -1,404 +1,395 @@
-/* ====================================================
-   AMAH MARY'S KITCHEN – MAIN STYLESHEET
-   ==================================================== */
+/* =================================================
+   AMAH MARY'S KITCHEN - MAIN STYLESHEET
+   ================================================= */
+
+/* -------- Root Colors -------- */
 
 :root{
 
---hue-primary: 22;
---hue-secondary: 28;
---hue-accent: 40;
+--primary:#ea580c;
+--primary-dark:#c2410c;
 
-/* Primary Colors */
---primary: hsl(var(--hue-primary), 72%, 45%);
---primary-light: hsl(var(--hue-primary), 85%, 60%);
---primary-dark: hsl(var(--hue-primary), 65%, 32%);
+--secondary:#78350f;
+--accent:#f59e0b;
 
-/* Secondary (brown tone) */
---secondary: hsl(var(--hue-secondary), 55%, 32%);
---secondary-light: hsl(var(--hue-secondary), 60%, 55%);
+--bg:#fff7ed;
+--card:#ffffff;
 
-/* Accent (yellow warmth) */
---accent: hsl(var(--hue-accent), 85%, 55%);
---accent-soft: hsl(var(--hue-accent), 95%, 88%);
-
-/* Backgrounds */
---bg: hsl(var(--hue-primary), 80%, 96%);
---card: hsl(0, 0%, 100%);
-
-/* Text */
---text: hsl(15, 25%, 22%);
---text-soft: hsl(15, 15%, 40%);
-
-/* Borders */
---border: hsl(var(--hue-primary), 40%, 82%);
+--text:#3b2f2f;
+--border:#f1d7c8;
 
 }
 
-/* ---------- Global Reset ---------- */
+/* -------- Global Reset -------- */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+background:linear-gradient(180deg,#fff7ed,#fff1e6);
+color:var(--text);
+line-height:1.6;
 }
 
-/* ====================================================
+/* =================================================
    TOP NAVBAR
-   ==================================================== */
+   ================================================= */
 
 .top-navbar{
-    background:var(--secondary);
-    padding:12px 24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+background:linear-gradient(90deg,#c2410c,#ea580c,#f97316);
+padding:12px 24px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+color:white;
 }
 
 .top-navbar-brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:#fff;
-    font-weight:700;
-    font-size:1rem;
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:700;
+font-size:1rem;
 }
 
 .brand-logo{
-    width:36px;
-    height:36px;
+width:36px;
+height:36px;
 }
 
 .top-navbar-user{
-    color:#eee;
-    font-size:0.85rem;
+font-size:0.85rem;
 }
 
-/* ====================================================
+/* =================================================
    SECONDARY NAVBAR
-   ==================================================== */
+   ================================================= */
 
 .sec-navbar{
-    background: var(--accent-soft);
-    border-bottom:1px solid var(--border);
-    display:flex;
-    padding:0 24px;
+background:linear-gradient(90deg,#fff1e6,#ffe4cc);
+border-bottom:1px solid var(--border);
+display:flex;
+padding:0 24px;
 }
 
 .sec-nav-item{
-    position:relative;
-    padding:10px 20px;
-    font-size:0.9rem;
-    cursor:pointer;
-    transition:background .2s;
+position:relative;
+padding:10px 20px;
+font-size:0.9rem;
+cursor:pointer;
+transition:background .2s;
 }
 
 .sec-nav-item:hover{
-    background:#f8e8da;
+background:#fff5ec;
 }
 
 .sec-nav-item a{
-    color:#333;
-    text-decoration:none;
+text-decoration:none;
+color:#333;
 }
 
 .sec-nav-item a:hover{
-    color:var(--primary);
+color:var(--primary);
 }
 
 .sec-dropdown{
-    display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:6px;
-    min-width:180px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+display:none;
+position:absolute;
+top:100%;
+left:0;
+background:#fff;
+border:1px solid var(--border);
+border-radius:6px;
+min-width:180px;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
 .sec-nav-item:hover .sec-dropdown{
-    display:block;
+display:block;
 }
 
 .sec-dropdown a{
-    display:block;
-    padding:8px 16px;
+display:block;
+padding:8px 16px;
 }
 
 .sec-dropdown a:hover{
-    background:#fff1e6;
+background:#fff1e6;
 }
 
-/* ====================================================
+/* =================================================
    CONTAINER
-   ==================================================== */
+   ================================================= */
 
 .container{
-    max-width:1100px;
-    margin:20px auto;
-    padding:24px;
-    background:var(--card);
-    border-radius:8px;
-    box-shadow:0 3px 12px rgba(0,0,0,0.06);
+max-width:1100px;
+margin:20px auto;
+padding:24px;
+background:var(--card);
+border-radius:8px;
+box-shadow:0 3px 12px rgba(0,0,0,0.06);
 }
 
-/* ====================================================
+/* =================================================
    PAGE TITLES
-   ==================================================== */
+   ================================================= */
 
-h2.page-title{
-    text-align:center;
-    font-size:1.2rem;
-    margin-bottom:20px;
+.page-title{
+text-align:center;
+font-size:1.2rem;
+margin-bottom:20px;
 }
 
-/* ====================================================
+/* =================================================
    TABLES
-   ==================================================== */
+   ================================================= */
 
 table{
-    width:100%;
-    border-collapse:collapse;
-    margin-bottom:20px;
+width:100%;
+border-collapse:collapse;
+margin-bottom:20px;
 }
 
-table th, table td{
-    padding:10px 14px;
-    border-bottom:1px solid #eee;
-    font-size:0.88rem;
+table th,
+table td{
+padding:10px 14px;
+border-bottom:1px solid #eee;
+font-size:0.88rem;
 }
 
 table th{
-    background:var(--primary);
-    color:#fff;
-    font-weight:600;
+background:linear-gradient(90deg,#c2410c,#ea580c);
+color:white;
+font-weight:600;
 }
 
 table tbody tr{
-    transition:all .2s;
+transition:all .2s;
 }
 
 table tbody tr:hover{
-    background:#fff1e6;
-    transform:scale(1.01);
+background:#fff1e6;
+transform:scale(1.01);
 }
 
 table tbody tr:nth-child(even){
-    background: var(--accent-soft);
+background:#fffaf5;
 }
 
-/* ====================================================
+/* =================================================
    BUTTONS
-   ==================================================== */
+   ================================================= */
 
 .btn{
-    padding:8px 18px;
-    border:none;
-    border-radius:6px;
-    font-size:0.85rem;
-    cursor:pointer;
-    text-decoration:none;
-    transition:all .25s;
+padding:8px 18px;
+border:none;
+border-radius:6px;
+font-size:0.85rem;
+cursor:pointer;
+text-decoration:none;
+transition:all .25s ease;
+color:white;
 }
 
 .btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 4px 8px rgba(0,0,0,0.15);
+transform:translateY(-2px);
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* Primary */
+
 .btn-primary{
-    background:var(--primary);
-    color:#fff;
+background:linear-gradient(135deg,#f97316,#c2410c);
 }
 
 .btn-primary:hover{
-    background: var(--primary-dark);
+background:linear-gradient(135deg,#fb923c,#ea580c);
 }
 
+/* Success */
+
 .btn-success{
-    background:#16a34a;
-    color:#fff;
+background:linear-gradient(135deg,#22c55e,#15803d);
 }
 
 .btn-success:hover{
-    background:#15803d;
+background:linear-gradient(135deg,#4ade80,#16a34a);
 }
 
+/* Danger */
+
 .btn-danger{
-    background:#dc2626;
-    color:#fff;
+background:linear-gradient(135deg,#ef4444,#b91c1c);
 }
 
 .btn-danger:hover{
-    background:#b91c1c;
+background:linear-gradient(135deg,#f87171,#dc2626);
 }
 
+/* Secondary */
+
 .btn-secondary{
-    background:var(--secondary);
-    color:#fff;
+background:linear-gradient(135deg,#a16207,#78350f);
 }
 
 .btn-secondary:hover{
-    background:#6b3410;
+background:linear-gradient(135deg,#ca8a04,#92400e);
 }
 
+/* Add New */
+
 .btn-add-new{
-    background:var(--accent);
-    color:#fff;
-    font-weight:600;
+background:linear-gradient(135deg,#fbbf24,#f59e0b);
+font-weight:600;
 }
 
 .btn-add-new:hover{
-    background: var(--accent);
+background:linear-gradient(135deg,#fcd34d,#fbbf24);
 }
 
-/* ====================================================
+/* =================================================
    DASHBOARD
-   ==================================================== */
+   ================================================= */
 
 .dash-stats{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    margin-bottom:25px;
+display:flex;
+justify-content:center;
+gap:30px;
+margin-bottom:25px;
 }
 
 .dash-pill{
-    background: var(--accent-soft);
-    border: 1px solid var(--accent);
-    border-radius:30px;
-    padding:18px 40px;
-    text-align:center;
+background:linear-gradient(135deg,#fff1e6,#ffe4cc);
+border:1px solid #f59e0b;
+border-radius:30px;
+padding:18px 40px;
+text-align:center;
 }
 
 .dash-pill-label{
-    font-size:0.82rem;
-    font-weight:600;
+font-size:0.82rem;
+font-weight:600;
 }
 
 .dash-pill-value{
-    font-size:1.2rem;
-    font-weight:700;
+font-size:1.2rem;
+font-weight:700;
 }
 
 .dash-section{
-    background: hsl(var(--hue-primary), 80%, 94%);
-    border:1px solid #f5d0a9;
-    border-radius:6px;
-    padding:18px;
-    margin-bottom:18px;
+background:linear-gradient(180deg,#fff7ed,#ffe9d6);
+border:1px solid #f5d0a9;
+border-radius:6px;
+padding:18px;
+margin-bottom:18px;
 }
 
 .dash-section-title{
-    font-weight:700;
-    margin-bottom:12px;
+font-weight:700;
+margin-bottom:12px;
 }
 
-/* ====================================================
-   SEARCH / TOOLBAR
-   ==================================================== */
+/* =================================================
+   SEARCH BAR
+   ================================================= */
 
 .order-toolbar{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
 }
 
 .search-bar{
-    display:flex;
-    gap:6px;
+display:flex;
+gap:6px;
 }
 
 .search-bar input{
-    padding:7px 12px;
-    border:1px solid #bbb;
-    border-radius:4px;
+padding:7px 12px;
+border:1px solid #bbb;
+border-radius:4px;
 }
 
 .search-bar button{
-    background:var(--secondary);
-    color:#fff;
-    border:none;
-    padding:7px 14px;
-    border-radius:4px;
+background:linear-gradient(135deg,#ea580c,#c2410c);
+color:white;
+border:none;
+padding:7px 14px;
+border-radius:4px;
 }
 
 .search-bar button:hover{
-    background:#6b3410;
+background:linear-gradient(135deg,#fb923c,#ea580c);
 }
 
-/* ====================================================
+/* =================================================
    STATUS BADGES
-   ==================================================== */
+   ================================================= */
 
 .status-badge{
-    padding:4px 12px;
-    border-radius:12px;
-    font-size:0.75rem;
-    font-weight:700;
+padding:4px 12px;
+border-radius:12px;
+font-size:0.75rem;
+font-weight:700;
 }
 
 .status-pending{
-    background:#fff3cd;
-    color:#856404;
+background:#fff3cd;
+color:#856404;
 }
 
 .status-completed{
-    background:#d4edda;
-    color:#155724;
+background:#d4edda;
+color:#155724;
 }
 
 .status-cancelled{
-    background:#f8d7da;
-    color:#721c24;
+background:#f8d7da;
+color:#721c24;
 }
 
-/* ====================================================
+/* =================================================
    FORMS
-   ==================================================== */
+   ================================================= */
 
-form.crud-form{
-    max-width:600px;
+form input,
+form select,
+form textarea{
+width:100%;
+padding:8px 10px;
+border:1px solid #ddd;
+border-radius:4px;
+margin-top:4px;
 }
 
-form input, form select, form textarea{
-    width:100%;
-    padding:8px 10px;
-    border:1px solid #ddd;
-    border-radius:4px;
-    margin-top:4px;
-}
-
-/* ====================================================
+/* =================================================
    ALERTS
-   ==================================================== */
+   ================================================= */
 
 .alert{
-    padding:12px 16px;
-    border-radius:4px;
-    margin-bottom:16px;
+padding:12px 16px;
+border-radius:4px;
+margin-bottom:16px;
 }
 
 .alert-success{
-    background:#d4edda;
-    color:#155724;
+background:#d4edda;
+color:#155724;
 }
 
 .alert-danger{
-    background:#f8d7da;
-    color:#721c24;
+background:#f8d7da;
+color:#721c24;
 }
 
-/* ====================================================
+/* =================================================
    MOBILE RESPONSIVE
-   ==================================================== */
+   ================================================= */
 
 @media(max-width:768px){
 
