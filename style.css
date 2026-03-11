@@ -371,15 +371,17 @@ table tbody tr:hover {
 
 .search-bar {
     display: flex;
+    align-items: center; 
     gap: 8px;
 }
 
 .search-bar input {
-    padding: 8px 14px;
+    padding: 9px 14px; 
     border: 1px solid #d4c3b3;
     border-radius: 6px;
     outline: none;
     transition: all 0.2s;
+    font-family: inherit;
 }
 
 .search-bar input:focus {
@@ -391,18 +393,23 @@ table tbody tr:hover {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 9px 16px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
     transition: filter 0.2s, transform 0.2s;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap; 
 }
 
 .search-bar button:hover {
     filter: brightness(1.1);
     transform: translateY(-1px);
 }
-
 /* =================================================
    STATUS BADGES
    ================================================= */
