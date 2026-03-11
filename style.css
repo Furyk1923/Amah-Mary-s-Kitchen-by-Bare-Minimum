@@ -4,15 +4,15 @@
 
 /* -------- Root Colors -------- */
 :root {
-    --primary: #ea580c;
-    --primary-dark: #c2410c;
-    --secondary: #78350f;
-    --accent: #f59e0b;
-    --bg-top: #fff7ed;
-    --bg-bottom: #fff1e6;
-    --card: #ffffff;
-    --text: #3b2f2f;
-    --border: #f1d7c8;
+    --primary: #c95e34;       /* Spiced Pumpkin */
+    --primary-dark: #a04420;  /* Roasted Pecan */
+    --secondary: #603b22;     /* Deep Bark / Espresso */
+    --accent: #e39f48;        /* Golden Maple */
+    --bg-top: #fcf4eb;        /* Vanilla Cream */
+    --bg-bottom: #f2e3cf;     /* Warm Latte */
+    --card: #ffffff;          /* Pure White */
+    --text: #402f25;          /* Deep Warm Gray/Brown */
+    --border: #e8d5c4;        /* Soft Warm Beige */
 }
 
 /* -------- Global Reset -------- */
@@ -24,7 +24,6 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
     min-height: 100vh; 
     background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
     color: var(--text);
@@ -35,13 +34,13 @@ body {
    TOP NAVBAR
    ================================================= */
 .top-navbar {
-    background: linear-gradient(90deg, #c2410c, #ea580c, #f97316);
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary), #df7345);
     padding: 12px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: white;
-    box-shadow: 0 2px 8px rgba(194, 65, 12, 0.2); 
+    box-shadow: 0 2px 8px rgba(160, 68, 32, 0.25);
 }
 
 .top-navbar-brand {
@@ -56,19 +55,19 @@ body {
 .brand-logo {
     width: 36px;
     height: 36px;
-    border-radius: 4px; 
+    border-radius: 4px;
 }
 
 .top-navbar-user {
     font-size: 0.85rem;
     font-weight: 500;
+    color: #fdf6eb;
 }
 
 /* =================================================
    SECONDARY NAVBAR
    ================================================= */
 .sec-navbar {
-
     background: #ffffff; 
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -85,7 +84,7 @@ body {
 }
 
 .sec-nav-item:hover {
-    background: #fff5ec;
+    background: #fcf4eb;
 }
 
 .sec-nav-item a {
@@ -107,8 +106,8 @@ body {
     border: 1px solid var(--border);
     border-radius: 0 0 6px 6px;
     min-width: 180px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-    z-index: 100; 
+    box-shadow: 0 6px 12px rgba(96, 59, 34, 0.08);
+    z-index: 100;
 }
 
 .sec-nav-item:hover .sec-dropdown {
@@ -122,7 +121,7 @@ body {
 }
 
 .sec-dropdown a:hover {
-    background: #fff5ec;
+    background: #fcf4eb;
     color: var(--primary);
 }
 
@@ -134,8 +133,8 @@ body {
     margin: 30px auto;
     padding: 24px;
     background: var(--card);
-    border-radius: 10px; 
-    box-shadow: 0 4px 16px rgba(120, 53, 15, 0.06); 
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(96, 59, 34, 0.06);
 }
 
 /* =================================================
@@ -151,7 +150,6 @@ body {
 /* =================================================
    TABLES
    ================================================= */
-
 .table-responsive {
     width: 100%;
     overflow-x: auto;
@@ -162,19 +160,19 @@ table {
     border-collapse: collapse;
     margin-bottom: 20px;
     border-radius: 6px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 table th,
 table td {
     padding: 12px 14px;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1ece6;
     font-size: 0.88rem;
     text-align: left;
 }
 
 table th {
-    background: linear-gradient(90deg, #c2410c, #ea580c);
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
     color: white;
     font-weight: 600;
 }
@@ -184,11 +182,11 @@ table tbody tr {
 }
 
 table tbody tr:hover {
-    background: #fff5ec;
+    background: #fdf8f4;
 }
 
 table tbody tr:nth-child(even) {
-    background: #fafafa;
+    background: #fcfaf8;
 }
 
 /* =================================================
@@ -208,33 +206,38 @@ table tbody tr:nth-child(even) {
 
 .btn:hover {
     transform: translateY(-2px);
-    filter: brightness(1.1); 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    filter: brightness(1.1);
+    box-shadow: 0 4px 10px rgba(96, 59, 34, 0.15);
 }
 
 .btn:active {
-    transform: translateY(0); 
+    transform: translateY(0);
 }
 
+/* Pumpkin/Rust */
 .btn-primary {
-    background: linear-gradient(135deg, #f97316, #c2410c);
+    background: linear-gradient(135deg, #df7345, var(--primary-dark));
 }
 
+/* Autumn Olive Green */
 .btn-success {
-    background: linear-gradient(135deg, #22c55e, #15803d);
+    background: linear-gradient(135deg, #6c804a, #4a5d23);
 }
 
+/* Deep Berry Red */
 .btn-danger {
-    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    background: linear-gradient(135deg, #c75656, #8f2d2d);
 }
 
+/* Deep Bark Brown */
 .btn-secondary {
-    background: linear-gradient(135deg, #a16207, #78350f);
+    background: linear-gradient(135deg, #825433, var(--secondary));
 }
 
+/* Golden Maple */
 .btn-add-new {
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    color: #451a03;
+    background: linear-gradient(135deg, #f2bd68, var(--accent));
+    color: #402f25; 
     font-weight: 600;
 }
 
@@ -249,9 +252,9 @@ table tbody tr:nth-child(even) {
 }
 
 .dash-pill {
-    background: #fffbf7; 
+    background: #fcfaf8; 
     border: 1px solid var(--border);
-    border-left: 4px solid var(--accent); 
+    border-left: 4px solid var(--accent);
     border-radius: 8px;
     padding: 20px;
     text-align: center;
@@ -261,13 +264,13 @@ table tbody tr:nth-child(even) {
 
 .dash-pill:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 6px 12px rgba(96, 59, 34, 0.05);
 }
 
 .dash-pill-label {
     font-size: 0.82rem;
     font-weight: 600;
-    color: #666;
+    color: #7a5e4d;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -312,7 +315,7 @@ table tbody tr:nth-child(even) {
 
 .search-bar input {
     padding: 8px 14px;
-    border: 1px solid #ccc;
+    border: 1px solid #d4c3b3;
     border-radius: 6px;
     outline: none;
     transition: all 0.2s;
@@ -320,11 +323,11 @@ table tbody tr:nth-child(even) {
 
 .search-bar input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+    box-shadow: 0 0 0 3px rgba(201, 94, 52, 0.15);
 }
 
 .search-bar button {
-    background: linear-gradient(135deg, #ea580c, #c2410c);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     border: none;
     padding: 8px 16px;
@@ -344,7 +347,7 @@ table tbody tr:nth-child(even) {
    ================================================= */
 .status-badge {
     padding: 4px 12px;
-    border-radius: 20px;
+    border-radius: 20px; 
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.3px;
@@ -352,18 +355,18 @@ table tbody tr:nth-child(even) {
 }
 
 .status-pending {
-    background: #fef3c7;
-    color: #92400e;
+    background: #fcebc4;
+    color: #8a5a19;
 }
 
 .status-completed {
-    background: #dcfce7;
-    color: #166534;
+    background: #e3eed8;
+    color: #3d5c31;
 }
 
 .status-cancelled {
-    background: #fee2e2;
-    color: #991b1b;
+    background: #f6dada;
+    color: #8a2525;
 }
 
 /* =================================================
@@ -374,7 +377,7 @@ form select,
 form textarea {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #d4c3b3;
     border-radius: 6px;
     margin-top: 6px;
     margin-bottom: 12px;
@@ -387,7 +390,7 @@ form input:focus,
 form select:focus,
 form textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+    box-shadow: 0 0 0 3px rgba(201, 94, 52, 0.15);
 }
 
 /* =================================================
@@ -402,15 +405,15 @@ form textarea:focus {
 }
 
 .alert-success {
-    background: #dcfce7;
-    color: #166534;
-    border-left: 4px solid #22c55e;
+    background: #e3eed8;
+    color: #3d5c31;
+    border-left: 4px solid #6c804a;
 }
 
 .alert-danger {
-    background: #fee2e2;
-    color: #991b1b;
-    border-left: 4px solid #ef4444;
+    background: #f6dada;
+    color: #8a2525;
+    border-left: 4px solid #b84a4a;
 }
 
 /* =================================================
@@ -434,7 +437,7 @@ form textarea:focus {
     }
 
     .sec-nav-item {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #f2e3cf;
     }
     
     .sec-dropdown {
@@ -443,6 +446,7 @@ form textarea:focus {
         border: none;
         border-left: 2px solid var(--primary);
         margin-left: 10px;
+        background: #faf4ed;
     }
 
     .order-toolbar {
