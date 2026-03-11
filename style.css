@@ -1,1086 +1,417 @@
-/* Amah Mary's Kitchen - Main Stylesheet */
+/* ====================================================
+   AMAH MARY'S KITCHEN – MAIN STYLESHEET
+   ==================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ---------- Color Theme (Food Business Palette) ---------- */
+:root{
+    --primary:#c2410c;     
+    --secondary:#8b4513;   
+    --accent:#f59e0b;      
+    --bg:#fff7ed;          
+    --card:#ffffff;
+    --text:#3b2f2f;
+    --border:#e6d3c5;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #d9d9d9;
-    color: #333;
-    line-height: 1.6;
+/* ---------- Global Reset ---------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
 }
 
 /* ====================================================
-   TOP NAVBAR (dark bar)
+   TOP NAVBAR
    ==================================================== */
-.top-navbar {
-    background-color: #2c2c2c;
-    padding: 10px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+.top-navbar{
+    background:var(--secondary);
+    padding:12px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.top-navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
+.top-navbar-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+    font-weight:700;
+    font-size:1rem;
 }
 
-.top-navbar-user {
-    color: #ccc;
-    font-size: 0.85rem;
+.brand-logo{
+    width:36px;
+    height:36px;
+}
+
+.top-navbar-user{
+    color:#eee;
+    font-size:0.85rem;
 }
 
 /* ====================================================
-   SECONDARY NAV (grey bar with dropdowns)
+   SECONDARY NAVBAR
    ==================================================== */
-.sec-navbar {
-    background-color: #e0e0e0;
-    border-bottom: 1px solid #bbb;
-    display: flex;
-    padding: 0 24px;
+
+.sec-navbar{
+    background:#f3e6d8;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    padding:0 24px;
 }
 
-.sec-nav-item {
-    position: relative;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    cursor: pointer;
+.sec-nav-item{
+    position:relative;
+    padding:10px 20px;
+    font-size:0.9rem;
+    cursor:pointer;
+    transition:background .2s;
 }
 
-.sec-nav-item a {
-    color: #333;
-    text-decoration: none;
+.sec-nav-item:hover{
+    background:#f8e8da;
 }
 
-.sec-nav-item.active a {
-    font-weight: 700;
+.sec-nav-item a{
+    color:#333;
+    text-decoration:none;
 }
 
-.nav-arrow {
-    font-size: 0.65rem;
-    margin-left: 4px;
-    color: #666;
+.sec-nav-item a:hover{
+    color:var(--primary);
 }
 
-.sec-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-width: 180px;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+.sec-dropdown{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:6px;
+    min-width:180px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
-.sec-nav-item:hover .sec-dropdown {
-    display: block;
+.sec-nav-item:hover .sec-dropdown{
+    display:block;
 }
 
-.sec-dropdown a {
-    display: block;
-    padding: 8px 16px;
-    color: #333;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: background 0.15s;
+.sec-dropdown a{
+    display:block;
+    padding:8px 16px;
 }
 
-.sec-dropdown a:hover {
-    background: #f0f0f0;
-}
-
-/* --- Page Container --- */
-.container {
-    max-width: 1100px;
-    margin: 20px auto;
-    padding: 20px 24px;
-    background: #e8e8e8;
-    border-radius: 6px;
-}
-
-/* --- Page Title --- */
-h2 {
-    color: #333;
-    margin-bottom: 20px;
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-h2.page-title {
-    text-align: center;
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 20px;
-}
-
-/* --- Tables --- */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    margin-bottom: 20px;
-}
-
-table th, table td {
-    padding: 10px 14px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-    font-size: 0.88rem;
-}
-
-table th {
-    background-color: #c0c0c0;
-    color: #333;
-    font-weight: 700;
-    font-size: 0.85rem;
-}
-
-table tr:hover {
-    background-color: #f5f5f5;
-}
-
-/* --- Forms --- */
-form.crud-form {
-    background: #fff;
-    padding: 24px;
-    border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    margin-bottom: 24px;
-    max-width: 600px;
-}
-
-form.crud-form label {
-    display: block;
-    margin-bottom: 14px;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-
-form.crud-form input[type="text"],
-form.crud-form input[type="email"],
-form.crud-form input[type="password"],
-form.crud-form input[type="number"],
-form.crud-form input[type="date"],
-form.crud-form select,
-form.crud-form textarea {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    margin-top: 4px;
-}
-
-form.crud-form textarea {
-    height: 80px;
-    resize: vertical;
-}
-
-/* --- Buttons --- */
-.btn {
-    display: inline-block;
-    padding: 8px 18px;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.btn-primary {
-    background-color: #555;
-    color: #fff;
-}
-.btn-primary:hover {
-    background-color: #333;
-}
-
-.btn-success {
-    background-color: #28a745;
-    color: #fff;
-}
-.btn-success:hover {
-    background-color: #218838;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: #fff;
-}
-.btn-danger:hover {
-    background-color: #c82333;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    color: #fff;
-}
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
-
-.btn-sm {
-    padding: 4px 10px;
-    font-size: 0.8rem;
-}
-
-/* Shared dark button style */
-.btn-dark {
-    display: inline-block;
-    padding: 10px 30px;
-    background-color: #2c2c2c;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    transition: background 0.2s;
-}
-.btn-dark:hover {
-    background-color: #444;
-}
-.btn-save { display: inline-block; }
-.btn-cancel { background-color: #555; }
-.btn-cancel:hover { background-color: #333; }
-
-/* + Add New button */
-.btn-add-new {
-    display: inline-block;
-    padding: 8px 18px;
-    background: #eee;
-    border: 1.5px solid #999;
-    border-radius: 4px;
-    color: #333;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.15s;
-    margin-bottom: 16px;
-}
-.btn-add-new:hover {
-    background: #ddd;
+.sec-dropdown a:hover{
+    background:#fff1e6;
 }
 
 /* ====================================================
-   ORDER MANAGEMENT – Toolbar / Search / Filters
+   CONTAINER
    ==================================================== */
-.order-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
 
-.search-bar {
-    display: flex;
-    gap: 6px;
-}
-.search-bar input[type="text"] {
-    padding: 7px 12px;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    width: 220px;
-}
-.search-bar button {
-    padding: 7px 14px;
-    background: #555;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.84rem;
-    cursor: pointer;
-}
-.search-bar button:hover { background: #333; }
-
-.filter-bar {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
-}
-.filter-chip {
-    padding: 5px 14px;
-    border: 1.5px solid #999;
-    border-radius: 4px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #444;
-    text-decoration: none;
-    background: #eee;
-    transition: background 0.15s;
-}
-.filter-chip:hover { background: #ddd; }
-.filter-chip.active {
-    background: #2c2c2c;
-    color: #fff;
-    border-color: #2c2c2c;
+.container{
+    max-width:1100px;
+    margin:20px auto;
+    padding:24px;
+    background:var(--card);
+    border-radius:8px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.06);
 }
 
 /* ====================================================
-   ORDER – Status badges
+   PAGE TITLES
    ==================================================== */
-.status-badge {
-    display: inline-block;
-    padding: 3px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-.status-pending   { background: #fff3cd; color: #856404; }
-.status-completed { background: #d4edda; color: #155724; }
-.status-cancelled { background: #f8d7da; color: #721c24; }
 
-/* ====================================================
-   PAGINATION
-   ==================================================== */
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-top: 16px;
-}
-.pagination a, .pagination span {
-    display: inline-block;
-    padding: 6px 12px;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.82rem;
-    color: #333;
-    background: #fff;
-    transition: background 0.15s;
-}
-.pagination a:hover { background: #ddd; }
-.pagination .current-page {
-    background: #2c2c2c;
-    color: #fff;
-    border-color: #2c2c2c;
-    font-weight: 700;
+h2.page-title{
+    text-align:center;
+    font-size:1.2rem;
+    margin-bottom:20px;
 }
 
 /* ====================================================
-   ORDER – Create / Edit Grid  (2×2 wireframe layout)
+   TABLES
    ==================================================== */
-.order-create-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    align-items: start;
-}
-.order-cell {
-    min-width: 0;
-}
-.order-btn-cell {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:20px;
 }
 
-/* Wireframe section (fieldset) */
-.wf-section {
-    background: #d5d5d5;
-    border: 1px solid #bbb;
-    border-radius: 6px;
-    padding: 16px 20px;
-}
-.wf-section legend {
-    font-weight: 700;
-    font-size: 0.88rem;
-    padding: 0 6px;
+table th, table td{
+    padding:10px 14px;
+    border-bottom:1px solid #eee;
+    font-size:0.88rem;
 }
 
-/* Inline label + input rows */
-.wf-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-.wf-row:last-child { margin-bottom: 0; }
-.wf-label {
-    font-size: 0.84rem;
-    font-weight: 600;
-    white-space: nowrap;
-    min-width: 70px;
-}
-.wf-input {
-    flex: 1;
-    padding: 7px 10px;
-    border: 1px solid #bbb;
-    border-radius: 16px;
-    font-size: 0.84rem;
-    background: #eee;
+table th{
+    background:var(--primary);
+    color:#fff;
+    font-weight:600;
 }
 
-/* Legacy wf-field (kept for other pages) */
-.wf-field {
-    margin-bottom: 12px;
-}
-.wf-field label {
-    display: block;
-    font-size: 0.84rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-.wf-field select,
-.wf-field input[type="text"],
-.wf-field input[type="date"],
-.wf-field textarea {
-    width: 100%;
-    padding: 7px 10px;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    font-size: 0.85rem;
-}
-.wf-field textarea { height: 52px; resize: vertical; }
-
-/* Delivery sub-section */
-.wf-delivery { display: block; }
-
-.radio-group-inline {
-    display: flex;
-    gap: 18px;
-}
-.radio-group-inline label {
-    font-weight: 400;
-    font-size: 0.84rem;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
+table tbody tr{
+    transition:all .2s;
 }
 
-.grand-total {
-    font-size: 1.1rem;
-    font-weight: 700;
-    padding: 14px 0 4px;
+table tbody tr:hover{
+    background:#fff1e6;
+    transform:scale(1.01);
 }
 
-.order-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding-top: 6px;
-}
-.order-buttons .btn-dark {
-    padding: 12px 32px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-/* Items table inside create order */
-.items-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 8px;
-}
-.items-table th, .items-table td {
-    padding: 6px 8px;
-    border: 1px solid #ccc;
-    font-size: 0.83rem;
-    text-align: center;
-}
-.items-table th {
-    background: #ddd;
-    font-weight: 700;
-}
-.items-table input, .items-table select {
-    width: 100%;
-    padding: 4px 6px;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    font-size: 0.82rem;
-}
-
-.btn-add-item {
-    padding: 5px 14px;
-    background: #eee;
-    border: 1px solid #999;
-    border-radius: 4px;
-    font-size: 0.82rem;
-    cursor: pointer;
-}
-.btn-add-item:hover { background: #ddd; }
-
-.btn-rm {
-    background: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 3px 8px;
-    font-size: 0.78rem;
-    cursor: pointer;
-}
-.btn-rm:hover { background: #c82333; }
-
-/* ====================================================
-   INVENTORY – Inline Edit Card (wireframe style)
-   ==================================================== */
-.inv-box {
-    background: #d5d5d5;
-    border-radius: 6px;
-    padding: 18px 22px;
-}
-.inv-box .btn-add-new {
-    margin-bottom: 14px;
-}
-.inv-box table {
-    margin-bottom: 16px;
-}
-.inv-row:hover {
-    background-color: #e8e8e8;
-}
-
-.inv-modal-hint {
-    font-size: 0.84rem;
-    font-style: italic;
-    color: #555;
-    margin-bottom: 8px;
-}
-.inv-modal-card {
-    background: #c0c0c0;
-    border-radius: 6px;
-    padding: 16px 20px;
-    margin-bottom: 10px;
-}
-.inv-modal-field {
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.inv-modal-label {
-    font-weight: 700;
-    font-size: 0.85rem;
-    min-width: 60px;
-}
-.inv-modal-field input,
-.inv-modal-field select {
-    flex: 1;
-    padding: 5px 8px;
-    border: 1px solid #999;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    background: #fff;
-}
-.inv-modal-actions {
-    margin-top: 12px;
-    display: flex;
-    gap: 10px;
-}
-
-.inv-panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
+table tbody tr:nth-child(even){
+    background:#fffaf5;
 }
 
 /* ====================================================
-   REPORTS
+   BUTTONS
    ==================================================== */
-.report-filter {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-.report-filter label {
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-.report-filter input[type="date"] {
-    padding: 6px 10px;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    font-size: 0.85rem;
+
+.btn{
+    padding:8px 18px;
+    border:none;
+    border-radius:6px;
+    font-size:0.85rem;
+    cursor:pointer;
+    text-decoration:none;
+    transition:all .25s;
 }
 
-.section-heading {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin: 20px 0 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 8px rgba(0,0,0,0.15);
 }
 
-.summary-box {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 16px 20px;
-    margin-bottom: 20px;
-}
-.summary-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-    font-size: 0.88rem;
-    border-bottom: 1px solid #eee;
-}
-.summary-row:last-child { border-bottom: none; }
-.summary-label { font-weight: 600; color: #555; }
-.summary-value { font-weight: 700; color: #333; }
-
-/* --- Alerts / Messages --- */
-.alert {
-    padding: 12px 16px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    font-size: 0.9rem;
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
 }
 
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+.btn-primary:hover{
+    background:#9a3412;
 }
 
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+.btn-success{
+    background:#16a34a;
+    color:#fff;
 }
 
-/* --- Auth Pages (Login/Register) --- */
-
-/* Shared auth page body */
-body.auth-page {
-    background-color: #d9d9d9;
-    min-height: 100vh;
+.btn-success:hover{
+    background:#15803d;
 }
 
-/* Top dark navbar for auth pages */
-.auth-navbar {
-    background-color: #2c2c2c;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.btn-danger{
+    background:#dc2626;
+    color:#fff;
 }
 
-.auth-navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
+.btn-danger:hover{
+    background:#b91c1c;
 }
 
-.brand-icon {
-    width: 30px;
-    height: 30px;
-    background: #777;
-    border-radius: 50%;
-    display: inline-block;
+.btn-secondary{
+    background:var(--secondary);
+    color:#fff;
 }
 
-.auth-navbar-links {
-    display: flex;
-    gap: 8px;
+.btn-secondary:hover{
+    background:#6b3410;
 }
 
-.auth-nav-btn {
-    padding: 6px 18px;
-    border: 1px solid #888;
-    border-radius: 4px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: background 0.2s;
+.btn-add-new{
+    background:var(--accent);
+    color:#fff;
+    font-weight:600;
 }
 
-.auth-nav-btn:hover,
-.auth-nav-btn.active {
-    background-color: #555;
+.btn-add-new:hover{
+    background:#d97706;
 }
 
-/* ========== SIGN UP PAGE ========== */
-.signup-wrapper {
-    max-width: 640px;
-    margin: 30px auto;
-    padding: 0 16px;
+/* ====================================================
+   DASHBOARD
+   ==================================================== */
+
+.dash-stats{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-bottom:25px;
 }
 
-.signup-form {
-    background: transparent;
+.dash-pill{
+    background:#ffe4cc;
+    border:1px solid var(--accent);
+    border-radius:30px;
+    padding:18px 40px;
+    text-align:center;
 }
 
-/* Fieldset sections (Personal Info / Account Security) */
-.form-section {
-    border: 1.5px solid #999;
-    border-radius: 6px;
-    padding: 20px 24px 16px;
-    margin-bottom: 20px;
-    background: rgba(255,255,255,0.15);
+.dash-pill-label{
+    font-size:0.82rem;
+    font-weight:600;
 }
 
-.form-section legend {
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 0 8px;
-    color: #333;
+.dash-pill-value{
+    font-size:1.2rem;
+    font-weight:700;
 }
 
-.form-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
+.dash-section{
+    background:#fff1e6;
+    border:1px solid #f5d0a9;
+    border-radius:6px;
+    padding:18px;
+    margin-bottom:18px;
 }
 
-.form-row label {
-    flex: 0 0 140px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: #333;
+.dash-section-title{
+    font-weight:700;
+    margin-bottom:12px;
 }
 
-.form-row input {
-    flex: 1;
-    padding: 7px 10px;
-    border: 1px solid #999;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    background: #fff;
+/* ====================================================
+   SEARCH / TOOLBAR
+   ==================================================== */
+
+.order-toolbar{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
 }
 
-/* Role / Access Level radio buttons */
-.role-section {
-    margin-bottom: 20px;
-    padding: 0 4px;
+.search-bar{
+    display:flex;
+    gap:6px;
 }
 
-.role-label {
-    display: block;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    color: #333;
+.search-bar input{
+    padding:7px 12px;
+    border:1px solid #bbb;
+    border-radius:4px;
 }
 
-.radio-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    font-size: 0.88rem;
+.search-bar button{
+    background:var(--secondary);
+    color:#fff;
+    border:none;
+    padding:7px 14px;
+    border-radius:4px;
 }
 
-.radio-option input[type="radio"] {
-    width: 16px;
-    height: 16px;
-    accent-color: #333;
+.search-bar button:hover{
+    background:#6b3410;
 }
 
-.radio-text {
-    color: #333;
+/* ====================================================
+   STATUS BADGES
+   ==================================================== */
+
+.status-badge{
+    padding:4px 12px;
+    border-radius:12px;
+    font-size:0.75rem;
+    font-weight:700;
 }
 
-/* Create / Cancel buttons */
-.signup-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 12px;
+.status-pending{
+    background:#fff3cd;
+    color:#856404;
 }
 
-.btn-dark {
-    display: inline-block;
-    padding: 10px 40px;
-    background-color: #2c2c2c;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    transition: background 0.2s;
+.status-completed{
+    background:#d4edda;
+    color:#155724;
 }
 
-.btn-dark:hover {
-    background-color: #444;
+.status-cancelled{
+    background:#f8d7da;
+    color:#721c24;
 }
 
-.signup-note {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #555;
-    margin-top: 8px;
+/* ====================================================
+   FORMS
+   ==================================================== */
+
+form.crud-form{
+    max-width:600px;
 }
 
-/* ========== LOGIN PAGE ========== */
-.login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 54px);
-    padding: 20px;
+form input, form select, form textarea{
+    width:100%;
+    padding:8px 10px;
+    border:1px solid #ddd;
+    border-radius:4px;
+    margin-top:4px;
 }
 
-.login-card {
-    background: #e8e8e8;
-    border-radius: 10px;
-    padding: 36px 36px 30px;
-    width: 100%;
-    max-width: 380px;
-    text-align: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+/* ====================================================
+   ALERTS
+   ==================================================== */
+
+.alert{
+    padding:12px 16px;
+    border-radius:4px;
+    margin-bottom:16px;
 }
 
-.login-icon {
-    width: 50px;
-    height: 50px;
-    background: #888;
-    border-radius: 50%;
-    margin: 0 auto 14px;
+.alert-success{
+    background:#d4edda;
+    color:#155724;
 }
 
-.login-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #333;
-    letter-spacing: 0.5px;
-    margin-bottom: 24px;
-    border: none;
+.alert-danger{
+    background:#f8d7da;
+    color:#721c24;
 }
 
-.login-field {
-    text-align: left;
-    margin-bottom: 16px;
+/* ====================================================
+   MOBILE RESPONSIVE
+   ==================================================== */
+
+@media(max-width:768px){
+
+.container{
+margin:10px;
+padding:16px;
 }
 
-.login-field label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
+.top-navbar{
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
 }
 
-.login-field input {
-    width: 100%;
-    padding: 9px 12px;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    background: #fff;
+.sec-navbar{
+flex-direction:column;
 }
 
-.password-wrapper {
-    position: relative;
+.dash-stats{
+flex-direction:column;
+align-items:center;
 }
 
-.password-wrapper input {
-    padding-right: 40px;
+.order-toolbar{
+flex-direction:column;
+gap:10px;
 }
 
-.toggle-pw {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #666;
-    padding: 2px;
+.search-bar input{
+width:100%;
 }
 
-.forgot-link {
-    display: block;
-    text-align: center;
-    font-size: 0.82rem;
-    color: #555;
-    margin-bottom: 20px;
-    text-decoration: none;
+table{
+font-size:0.8rem;
 }
 
-.forgot-link:hover {
-    text-decoration: underline;
 }
-
-.btn-login {
-    display: block;
-    width: 70%;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: #2c2c2c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.btn-login:hover {
-    background-color: #444;
-}
-
-/* --- Legacy auth-wrapper (keep for fallback) --- */
-.auth-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #fdf6f0 0%, #f8e0d0 100%);
-}
-
-.auth-box {
-    background: #fff;
-    padding: 36px 32px;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 420px;
-}
-
-.auth-box h2 {
-    text-align: center;
-    border: none;
-    margin-bottom: 24px;
-}
-
-.auth-box label {
-    display: block;
-    margin-bottom: 14px;
-    font-weight: 500;
-}
-
-.auth-box input,
-.auth-box select {
-    width: 100%;
-    padding: 9px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 4px;
-    font-size: 0.9rem;
-}
-
-.auth-box button {
-    width: 100%;
-    margin-top: 8px;
-}
-
-.auth-box .link {
-    text-align: center;
-    margin-top: 14px;
-    font-size: 0.85rem;
-}
-
-.auth-box .link a {
-    color: #d4451a;
-    text-decoration: none;
-}
-
-/* --- Dashboard Cards --- */
-.dash-stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 24px;
-}
-.dash-pill {
-    background: #c0c0c0;
-    border-radius: 28px;
-    padding: 18px 36px;
-    text-align: center;
-    min-width: 200px;
-}
-.dash-pill-label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
-}
-.dash-pill-value {
-    font-size: 1.15rem;
-    font-weight: 700;
-}
-
-/* Dashboard sections */
-.dash-section {
-    background: #d5d5d5;
-    border-radius: 6px;
-    padding: 16px 20px;
-    margin-bottom: 18px;
-}
-.dash-section-title {
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: 0.3px;
-}
-.dash-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: transparent;
-    box-shadow: none;
-}
-.dash-table th, .dash-table td {
-    padding: 6px 14px;
-    text-align: left;
-    font-size: 0.85rem;
-    border: none;
-}
-.dash-table th {
-    font-weight: 700;
-    background: transparent;
-    border-bottom: 1px solid #aaa;
-}
-.dash-table td {
-    border-bottom: none;
-}
-.dash-action-link {
-    color: #333;
-    text-decoration: none;
-    font-weight: 600;
-}
-.dash-action-link:hover {
-    text-decoration: underline;
-}
-.dash-empty {
-    font-size: 0.85rem;
-    color: #666;
-    font-style: italic;
-}
-
-/* --- Utility --- */
-.mb-10 { margin-bottom: 10px; }
-.mb-20 { margin-bottom: 20px; }
-.text-right { text-align: right; }
-.actions a { margin-right: 6px; }
