@@ -214,6 +214,43 @@ table tbody tr:hover {
 }
 
 /* =================================================
+   TABLE FILTERS
+   ================================================= */
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    margin-bottom: 16px; 
+    font-size: 0.9rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.filter-link {
+    text-decoration: none; 
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-weight: 500;
+    background: var(--card);
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.filter-link:hover {
+    background: #fdf6eb; /* Soft cream hover */
+    border-color: var(--accent);
+    color: var(--primary-dark);
+}
+
+.filter-link.active {
+    background: var(--primary); /* Spiced Pumpkin */
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 2px 6px rgba(201, 94, 52, 0.25);
+}
+/* =================================================
    BUTTONS
    ================================================= */
 .btn {
