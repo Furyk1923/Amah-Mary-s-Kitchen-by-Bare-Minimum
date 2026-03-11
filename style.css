@@ -254,6 +254,7 @@ table tbody tr:hover {
    BUTTONS
    ================================================= */
 .btn {
+    display: inline-block;
     padding: 8px 18px;
     border: none;
     border-radius: 6px;
@@ -300,6 +301,7 @@ table tbody tr:hover {
     background: linear-gradient(135deg, #f2bd68, var(--accent));
     color: #402f25; 
     font-weight: 600;
+    margin-bottom: 16px;
 }
 
 /* =================================================
