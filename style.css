@@ -424,6 +424,32 @@ table tbody tr:hover {
 .search-bar button:hover {
     filter: brightness(1.1);
 }
+
+/* =================================================
+   REPORT FILTER FORM
+   ================================================= */
+.report-filter {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 24px;
+    background: #fdfaf8; /* Soft, warm background */
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    flex-wrap: wrap; /* Allows stacking on very small mobile screens */
+}
+
+.report-filter span {
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+.report-filter input[type="date"] {
+    width: auto; /* Overrides the global 100% width from standard forms */
+    margin: 0;
+    padding: 8px 14px;
+}
 /* =================================================
    STATUS BADGES
    ================================================= */

@@ -63,12 +63,12 @@ if ($generated) {
 
     <!-- Date Range Filter -->
     <form method="get" action="reports.php" class="report-filter">
-        <span>Date Range:</span>
-        <input type="date" name="start_date" value="<?= htmlspecialchars($start_date) ?>" required>
-        <span>to</span>
-        <input type="date" name="end_date" value="<?= htmlspecialchars($end_date) ?>" required>
-        <button type="submit" class="btn-dark">GENERATE REPORT</button>
-    </form>
+            <span>Date Range:</span>
+            <input type="date" name="start_date" value="<?= htmlspecialchars($start_date) ?>" required>
+            <span>to</span>
+            <input type="date" name="end_date" value="<?= htmlspecialchars($end_date) ?>" required>
+            <button type="submit" class="btn btn-primary">GENERATE REPORT</button>
+        </form>
 
     <?php if ($generated): ?>
     <!-- Summary -->

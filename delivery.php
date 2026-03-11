@@ -126,7 +126,7 @@ if (isset($_GET['msg'])) {
     </form>
 
     <?php else: ?>
-    <a href="delivery.php?action=add" class="btn btn-success mb-20">+ Add Delivery</a>
+    <a href="delivery.php?action=add" class="btn btn-add-new">+ Add Delivery</a>
     <table>
         <thead>
         <tr>

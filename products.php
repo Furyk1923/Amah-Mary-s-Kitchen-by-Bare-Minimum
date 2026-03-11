@@ -97,7 +97,7 @@ if (isset($_GET['msg'])) {
 
     <!-- Inventory section -->
     <div class="inv-box">
-        <a href="products.php?action=add" class="btn-add-new">+ Add New Product</a>
+        <a href="products.php?action=add" class="btn btn-add-new">+ Add New Product</a>
 
         <table>
             <thead>
