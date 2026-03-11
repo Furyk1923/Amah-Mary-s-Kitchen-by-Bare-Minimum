@@ -4,13 +4,35 @@
 
 /* ---------- Color Theme (Food Business Palette) ---------- */
 :root{
-    --primary:#c2410c;     
-    --secondary:#8b4513;   
-    --accent:#f59e0b;      
-    --bg:#fff7ed;          
-    --card:#ffffff;
-    --text:#3b2f2f;
-    --border:#e6d3c5;
+
+--hue-primary: 22;
+--hue-secondary: 28;
+--hue-accent: 40;
+
+/* Primary Colors */
+--primary: hsl(var(--hue-primary), 72%, 45%);
+--primary-light: hsl(var(--hue-primary), 85%, 60%);
+--primary-dark: hsl(var(--hue-primary), 65%, 32%);
+
+/* Secondary (brown tone) */
+--secondary: hsl(var(--hue-secondary), 55%, 32%);
+--secondary-light: hsl(var(--hue-secondary), 60%, 55%);
+
+/* Accent (yellow warmth) */
+--accent: hsl(var(--hue-accent), 85%, 55%);
+--accent-soft: hsl(var(--hue-accent), 95%, 88%);
+
+/* Backgrounds */
+--bg: hsl(var(--hue-primary), 80%, 96%);
+--card: hsl(0, 0%, 100%);
+
+/* Text */
+--text: hsl(15, 25%, 22%);
+--text-soft: hsl(15, 15%, 40%);
+
+/* Borders */
+--border: hsl(var(--hue-primary), 40%, 82%);
+
 }
 
 /* ---------- Global Reset ---------- */
