@@ -11,6 +11,7 @@ $is_reports   = in_array($current_page, ['reports.php','products_xml.php']);
 <!-- Top dark navbar -->
 <nav class="top-navbar">
     <div class="top-navbar-brand">
+        <img src="logo.png" class="brand-logo">
         <span class="brand-icon"></span>
         <span>AMAH MARY'S KITCHEN</span>
     </div>
