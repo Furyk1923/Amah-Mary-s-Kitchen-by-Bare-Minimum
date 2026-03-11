@@ -429,21 +429,25 @@ $total_pages = max(1, ceil($total_rows / $per_page));
 
 <?php else: ?>
     <!-- ==================== ORDER LIST ==================== -->
-    <h2 class="page-title">ORDER MANAGEMENT</h2>
+<h2 class="page-title">ORDER MANAGEMENT</h2>
 
     <div class="order-toolbar">
-        <a href="orders.php?action=add" class="btn-add-new">+ Create New Order</a>
+        <a href="orders.php?action=add" class="btn btn-add-new">+ Create New Order</a>
+        
         <form method="get" action="orders.php" class="search-bar">
-            <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="🔍 Search by Customer or Order ID">
-            <?php if ($filter !== 'All'): ?><input type="hidden" name="filter" value="<?= htmlspecialchars($filter) ?>"><?php endif; ?>
+            <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search by Customer or Order ID">
+            <?php if ($filter !== 'All'): ?>
+                <input type="hidden" name="filter" value="<?= htmlspecialchars($filter) ?>">
+            <?php endif; ?>
+            <button type="submit">🔍 Search</button>
         </form>
     </div>
 
-    <div class="filter-bar">
-        Filter:
+    <div class="filter-group">
+        <span>Filter:</span>
         <?php foreach (['All','Pending','Completed','Cancelled'] as $f): ?>
             <a href="orders.php?filter=<?= $f ?>&search=<?= urlencode($search) ?>"
-               class="filter-chip <?= $filter === $f ? 'active' : '' ?>">[<?= $f ?>]</a>
+               class="filter-link <?= $filter === $f ? 'active' : '' ?>"><?= $f ?></a>
         <?php endforeach; ?>
     </div>
 
