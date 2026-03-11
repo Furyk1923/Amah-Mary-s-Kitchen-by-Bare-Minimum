@@ -141,7 +141,7 @@ if (isset($_GET['msg'])) {
     </form>
 
     <?php else: ?>
-    <a href="users.php?action=add" class="btn btn-success mb-20">+ Add User</a>
+    <a href="users.php?action=add" class="btn btn-add-new">+ Add User</a>
     <table>
         <thead>
         <tr>
