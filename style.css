@@ -2,7 +2,6 @@
    AMAH MARY'S KITCHEN – MAIN STYLESHEET
    ==================================================== */
 
-/* ---------- Color Theme (Food Business Palette) ---------- */
 :root{
 
 --hue-primary: 22;
@@ -85,7 +84,7 @@ body{
    ==================================================== */
 
 .sec-navbar{
-    background:#f3e6d8;
+    background: var(--accent-soft);
     border-bottom:1px solid var(--border);
     display:flex;
     padding:0 24px;
@@ -192,7 +191,7 @@ table tbody tr:hover{
 }
 
 table tbody tr:nth-child(even){
-    background:#fffaf5;
+    background: var(--accent-soft);
 }
 
 /* ====================================================
@@ -220,7 +219,7 @@ table tbody tr:nth-child(even){
 }
 
 .btn-primary:hover{
-    background:#9a3412;
+    background: var(--primary-dark);
 }
 
 .btn-success{
@@ -257,7 +256,7 @@ table tbody tr:nth-child(even){
 }
 
 .btn-add-new:hover{
-    background:#d97706;
+    background: var(--accent);
 }
 
 /* ====================================================
@@ -272,8 +271,8 @@ table tbody tr:nth-child(even){
 }
 
 .dash-pill{
-    background:#ffe4cc;
-    border:1px solid var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
     border-radius:30px;
     padding:18px 40px;
     text-align:center;
@@ -290,7 +289,7 @@ table tbody tr:nth-child(even){
 }
 
 .dash-section{
-    background:#fff1e6;
+    background: hsl(var(--hue-primary), 80%, 94%);
     border:1px solid #f5d0a9;
     border-radius:6px;
     padding:18px;
