@@ -1,5 +1,6 @@
 /* =================================================
    AMAH MARY'S KITCHEN - MAIN STYLESHEET
+   (Autumn Harvest Theme)
    ================================================= */
 
 /* -------- Root Colors -------- */
@@ -97,6 +98,26 @@ body {
     color: var(--primary);
 }
 
+.sec-nav-item.active {
+    background: #fcf4eb;
+}
+
+.sec-nav-item.active a {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.sec-nav-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; 
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px 3px 0 0;
+}
+
 .sec-dropdown {
     display: none;
     position: absolute;
@@ -159,34 +180,37 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    border-radius: 6px;
-    overflow: hidden;
+    background: var(--card);
 }
 
 table th,
 table td {
-    padding: 12px 14px;
-    border-bottom: 1px solid #f1ece6;
-    font-size: 0.88rem;
+    padding: 14px 16px; 
     text-align: left;
+    font-size: 0.9rem;
 }
 
 table th {
-    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
-    color: white;
-    font-weight: 600;
+    background: #fdf6eb; 
+    color: var(--secondary); 
+    font-weight: 700;
+    text-transform: uppercase; 
+    font-size: 0.75rem;
+    letter-spacing: 0.8px; 
+    border-bottom: 2px solid #e8d5c4; 
+}
+
+table td {
+    border-bottom: 1px solid #f1ece6;
+    color: var(--text);
 }
 
 table tbody tr {
-    transition: background 0.2s;
+    transition: background 0.2s ease;
 }
 
 table tbody tr:hover {
-    background: #fdf8f4;
-}
-
-table tbody tr:nth-child(even) {
-    background: #fcfaf8;
+    background: #fdfaf7; 
 }
 
 /* =================================================
@@ -438,6 +462,16 @@ form textarea:focus {
 
     .sec-nav-item {
         border-bottom: 1px solid #f2e3cf;
+    }
+
+    /* Shift the active highlight to the left on mobile screens */
+    .sec-nav-item.active::after {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        border-radius: 0;
     }
     
     .sec-dropdown {
