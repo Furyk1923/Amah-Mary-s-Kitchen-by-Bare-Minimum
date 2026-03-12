@@ -51,84 +51,85 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="auth-page">
 
-<!-- Top Navbar -->
 <nav class="auth-navbar">
-    <div class="auth-navbar-brand">
-        <span class="brand-icon"></span>
-        <span>AMAH MARY'S KITCHEN</span>
-    </div>
     <div class="auth-navbar-links">
         <a href="register.php" class="auth-nav-btn active">Sign up</a>
         <a href="login.php" class="auth-nav-btn">Log in</a>
     </div>
 </nav>
 
-<div class="signup-wrapper">
-    <?php if (!empty($errors)): ?>
-        <div class="alert alert-danger" style="max-width:620px;margin:0 auto 16px;">
-        <?php foreach ($errors as $e): ?>
-            <?= htmlspecialchars($e); ?><br>
-        <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+<div class="login-wrapper">
+    <div class="login-card register-card">
+        
+        <img src="logo.png" alt="Amah Mary's Kitchen Logo" class="login-logo">
+        <h2 class="login-title">Create an Account</h2>
+        <p class="login-subtitle">Join the team and manage the kitchen.</p>
 
-    <form method="post" action="" class="signup-form">
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger">
+            <?php foreach ($errors as $e): ?>
+                <?= htmlspecialchars($e); ?><br>
+            <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
-        <!-- Personal Information -->
-        <fieldset class="form-section">
-            <legend>Personal Information</legend>
-            <div class="form-row">
-                <label for="full_name">Full Name:</label>
-                <input type="text" id="full_name" name="full_name" required>
-            </div>
-            <div class="form-row">
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email">
-            </div>
-            <div class="form-row">
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone">
-            </div>
-        </fieldset>
+        <form method="post" action="" class="signup-form">
+            <div class="register-grid">
+                
+                <fieldset class="form-section">
+                    <legend>Personal Information</legend>
+                    <div class="login-field">
+                        <label for="full_name">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="login-field">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com">
+                    </div>
+                    <div class="login-field">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" name="phone" placeholder="09XX XXX XXXX">
+                    </div>
+                </fieldset>
 
-        <!-- Account Security -->
-        <fieldset class="form-section">
-            <legend>Account Security</legend>
-            <div class="form-row">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-row">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-row">
-                <label for="confirm_password">Confirm Pass:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
-            </div>
-        </fieldset>
+                <fieldset class="form-section">
+                    <legend>Account Security</legend>
+                    <div class="login-field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                    </div>
+                    <div class="login-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="login-field">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" required>
+                    </div>
+                </fieldset>
 
-        <!-- Role / Access Level -->
-        <div class="role-section">
-            <span class="role-label">Role / Access Level:</span>
-            <label class="radio-option">
-                <input type="radio" name="role" value="Staff" checked>
-                <span class="radio-text"><strong>Staff</strong> &nbsp;(Can View/add orders, cannot delete)</span>
-            </label>
-            <label class="radio-option">
-                <input type="radio" name="role" value="Admin">
-                <span class="radio-text"><strong>Admin</strong> &nbsp;(Full access to reports &amp; settings)</span>
-            </label>
-        </div>
+            </div>
 
-        <!-- Buttons -->
-        <div class="signup-buttons">
-            <button type="submit" class="btn-dark">Create</button>
-            <a href="login.php" class="btn-dark btn-cancel">Cancel</a>
-        </div>
+            <div class="role-section">
+                <span class="role-label">Role / Access Level:</span>
+                <label class="radio-option">
+                    <input type="radio" name="role" value="Staff" checked>
+                    <span class="radio-text"><strong>Staff</strong> &mdash; Can view and add orders, cannot delete.</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="role" value="Admin">
+                    <span class="radio-text"><strong>Admin</strong> &mdash; Full access to all reports and system settings.</span>
+                </label>
+            </div>
 
-        <p class="signup-note">*An email will be sent to the user for verification.</p>
-    </form>
+            <div class="signup-buttons">
+                <button type="submit" class="btn btn-primary">Create Account</button>
+                <a href="login.php" class="btn btn-secondary">Cancel</a>
+            </div>
+
+            <p class="signup-note">* An email will be sent to the user for verification.</p>
+        </form>
+    </div>
 </div>
 
 </body>

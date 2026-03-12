@@ -401,6 +401,111 @@ table tbody tr:hover {
 }
 
 /* =================================================
+   REGISTER PAGE SPECIFICS
+   ================================================= */
+.register-card {
+    max-width: 750px; /* Wider card to fit two columns */
+    padding: 40px 50px;
+}
+
+.register-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 30px; /* Space between columns */
+    text-align: left;
+}
+
+.form-section {
+    border: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.form-section legend {
+    font-weight: 800;
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+    border-bottom: 2px solid #e8d5c4;
+    width: 100%;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+/* Custom Role Selection Box */
+.role-section {
+    margin-top: 10px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white box */
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(232, 213, 196, 0.5);
+}
+
+.role-label {
+    display: block;
+    font-weight: 800;
+    color: var(--secondary);
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary); /* Tints the radio button orange */
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.radio-text {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.radio-text strong {
+    color: var(--secondary);
+}
+
+.signup-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.signup-buttons .btn {
+    flex: 1; /* Makes the Create and Cancel buttons perfectly equal width */
+    text-align: center;
+    padding: 14px;
+    font-size: 1.05rem;
+    border-radius: 30px;
+}
+
+.signup-note {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #826a5a;
+}
+
+/* On small mobile screens, stack the columns vertically */
+@media(max-width: 768px) {
+    .register-grid {
+        grid-template-columns: 1fr;
+    }
+    .register-card {
+        padding: 30px 20px;
+    }
+}
+
+/* =================================================
    TABLE FILTERS
    ================================================= */
 .filter-group {
