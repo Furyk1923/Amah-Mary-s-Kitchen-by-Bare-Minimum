@@ -52,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login - Amah Mary's Kitchen</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="auth-page">
 
 <nav class="auth-navbar">
