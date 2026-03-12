@@ -258,6 +258,18 @@ table tbody tr:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
+.auth-nav-btn.signup-btn {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 10px rgba(201, 94, 52, 0.3);
+}
+
+.auth-nav-btn.signup-btn:hover {
+    background: var(--primary-dark);
+    color: white;
+    transform: translateY(-1px);
+}
+
 .login-wrapper {
     flex-grow: 1;
     display: flex;
