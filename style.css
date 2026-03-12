@@ -214,6 +214,155 @@ table tbody tr:hover {
 }
 
 /* =================================================
+   AUTHENTICATION PAGES (LOGIN / REGISTER)
+   ================================================= */
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Auth Navbar */
+.auth-navbar {
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary), #df7345);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 2px 8px rgba(160, 68, 32, 0.25);
+}
+
+.auth-navbar-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-navbar-links {
+    display: flex;
+    gap: 12px;
+}
+
+.auth-nav-btn {
+    color: #fdf6eb;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.auth-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.auth-nav-btn.active {
+    background: white;
+    color: var(--primary-dark);
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Login Card Layout */
+.login-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-card {
+    background: var(--card);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(96, 59, 34, 0.08);
+    border-top: 6px solid var(--primary); 
+}
+
+.login-title {
+    color: var(--secondary);
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Login Form Fields */
+.login-field {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.login-field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-bottom: 6px;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    margin: 0;
+    padding-right: 40px; 
+}
+
+.toggle-pw {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #a39184;
+    transition: color 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-pw:hover {
+    color: var(--primary);
+}
+
+/* Links & Buttons */
+.forgot-link {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-decoration: none;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%; 
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+/* =================================================
    TABLE FILTERS
    ================================================= */
 .filter-group {

@@ -52,13 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login - Amah Mary's Kitchen</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="auth-page">
 
-<!-- Top Navbar -->
 <nav class="auth-navbar">
     <div class="auth-navbar-brand">
-        <span class="brand-icon"></span>
-        <span>AMAH MARY'S KITCHEN</span>
+        <span class="brand-icon">🍂</span> <span>AMAH MARY'S KITCHEN</span>
     </div>
     <div class="auth-navbar-links">
         <a href="register.php" class="auth-nav-btn">Sign up</a>
@@ -68,8 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="login-wrapper">
     <div class="login-card">
-        <div class="login-icon"></div>
-        <h2 class="login-title">AMAH MARY'S KITCHEN</h2>
+        <h2 class="login-title">Welcome Back</h2>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger">
@@ -83,20 +81,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="alert alert-success">Account created! Please log in.</div>
         <?php endif; ?>
 
-        <form method="post" action="">
+        <form method="post" action="login.php">
             <div class="login-field">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Admin" required>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
+            
             <div class="login-field">
                 <label for="password">Password</label>
                 <div class="password-wrapper">
                     <input type="password" id="password" name="password" placeholder="••••••••" required>
-                    <button type="button" class="toggle-pw" onclick="togglePassword()">👁</button>
+                    <button type="button" class="toggle-pw" onclick="togglePassword()" title="Toggle Password Visibility">👁</button>
                 </div>
             </div>
+            
             <a href="#" class="forgot-link">Forgot Password?</a>
-            <button type="submit" class="btn-login">LOG IN</button>
+            
+            <button type="submit" class="btn btn-login">LOG IN</button>
         </form>
     </div>
 </div>
