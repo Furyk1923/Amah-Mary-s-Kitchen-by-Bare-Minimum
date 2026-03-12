@@ -9,6 +9,12 @@ $today_sales = $mysqli->query("SELECT COALESCE(SUM(total_amount),0) AS total FRO
 // Pending orders count
 $pending_orders = $mysqli->query("SELECT COUNT(*) AS c FROM orders WHERE status='Pending'")->fetch_assoc()['c'];
 
+// Total customers
+$total_customers = $mysqli->query("SELECT COUNT(*) AS c FROM customers")->fetch_assoc()['c'];
+
+// Total products
+$total_products = $mysqli->query("SELECT COUNT(*) AS c FROM products WHERE status != 'Discontinued'")->fetch_assoc()['c'];
+
 // Low stock products (stock_quantity <= 5 and Active or Low Stock)
 $low_stock = $mysqli->query("SELECT product_id, product_name, stock_quantity FROM products WHERE stock_quantity <= 5 AND status != 'Discontinued' ORDER BY stock_quantity ASC");
 
@@ -39,16 +45,24 @@ $deliveries_upcoming = $mysqli->query("
     <h2 class="page-title">DASHBOARD</h2>
 
     <!-- Stat pills row -->
-    <div class="dash-stats">
-        <div class="dash-pill">
-            <div class="dash-pill-label">TODAY'S SALES</div>
-            <div class="dash-pill-value">₱ <?= number_format($today_sales, 2) ?></div>
-        </div>
-        <div class="dash-pill">
-            <div class="dash-pill-label">PENDING ORDERS</div>
-            <div class="dash-pill-value"><?= str_pad($pending_orders, 2, '0', STR_PAD_LEFT) ?></div>
-        </div>
+<div class="dash-stats">
+    <div class="dash-pill">
+        <div class="dash-pill-label">TODAY'S SALES</div>
+        <div class="dash-pill-value">₱ <?= number_format($today_sales, 2) ?></div>
     </div>
+    <div class="dash-pill">
+        <div class="dash-pill-label">PENDING ORDERS</div>
+        <div class="dash-pill-value"><?= str_pad($pending_orders, 2, '0', STR_PAD_LEFT) ?></div>
+    </div>
+    <div class="dash-pill">
+        <div class="dash-pill-label">TOTAL CUSTOMERS</div>
+        <div class="dash-pill-value"><?= $total_customers ?></div>
+    </div>
+    <div class="dash-pill">
+        <div class="dash-pill-label">ACTIVE PRODUCTS</div>
+        <div class="dash-pill-value"><?= $total_products ?></div>
+    </div>
+</div>
 
     <!-- Low Stock Alert -->
     <div class="dash-section">
