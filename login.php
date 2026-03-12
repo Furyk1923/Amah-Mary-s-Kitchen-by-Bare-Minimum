@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <nav class="auth-navbar">
     <div class="auth-navbar-links">
-        <a href="register.php" class="auth-nav-btn">Sign up</a>
+        <a href="register.php" class="auth-nav-btn signup-btn">Sign up</a>
         <a href="login.php" class="auth-nav-btn active">Log in</a>
     </div>
 </nav>
