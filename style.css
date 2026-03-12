@@ -214,32 +214,24 @@ table tbody tr:hover {
 }
 
 /* =================================================
-   AUTHENTICATION PAGES (LOGIN / REGISTER)
+   AUTHENTICATION PAGES (PREMIUM UI)
    ================================================= */
 .auth-page {
+    /* Adds a beautiful background image with a warm autumn overlay */
+    background: linear-gradient(rgba(242, 227, 207, 0.85), rgba(96, 59, 34, 0.85)), 
+                url('https://images.unsplash.com/photo-1556910103-1c02745a872f?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Auth Navbar */
+/* Make the navbar transparent so it blends into the background image */
 .auth-navbar {
-    background: linear-gradient(90deg, var(--primary-dark), var(--primary), #df7345);
-    padding: 16px 24px;
+    background: transparent;
+    padding: 20px 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Push links to the right */
     align-items: center;
-    color: white;
-    box-shadow: 0 2px 8px rgba(160, 68, 32, 0.25);
-}
-
-.auth-navbar-brand {
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .auth-navbar-links {
@@ -250,11 +242,12 @@ table tbody tr:hover {
 .auth-nav-btn {
     color: #fdf6eb;
     text-decoration: none;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 20px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 30px;
     transition: all 0.2s;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
 }
 
 .auth-nav-btn:hover {
@@ -264,11 +257,10 @@ table tbody tr:hover {
 .auth-nav-btn.active {
     background: white;
     color: var(--primary-dark);
-    font-weight: 700;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* Login Card Layout */
+/* Premium Glassmorphism Login Card */
 .login-wrapper {
     flex-grow: 1;
     display: flex;
@@ -278,34 +270,51 @@ table tbody tr:hover {
 }
 
 .login-card {
-    background: var(--card);
+    background: rgba(255, 255, 255, 0.98); /* Slightly transparent white */
+    backdrop-filter: blur(10px); /* Blurs the background behind the card */
     width: 100%;
-    max-width: 420px;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(96, 59, 34, 0.08);
-    border-top: 6px solid var(--primary); 
+    max-width: 440px;
+    padding: 40px 50px;
+    border-radius: 20px; /* Softer, modern corners */
+    box-shadow: 0 20px 50px rgba(64, 47, 37, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center; /* Centers the logo and headers */
+}
+
+/* Centers the logo inside the card */
+.login-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px auto;
+    display: block;
+    border-radius: 8px;
 }
 
 .login-title {
     color: var(--secondary);
-    font-size: 1.6rem;
-    margin-bottom: 24px;
-    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+    font-weight: 800;
 }
 
-/* Login Form Fields */
+.login-subtitle {
+    color: #826a5a;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* Modern, chunky input fields */
 .login-field {
     text-align: left;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .login-field label {
     display: block;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.85rem;
     color: var(--secondary);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .password-wrapper {
@@ -314,52 +323,76 @@ table tbody tr:hover {
     align-items: center;
 }
 
+.login-field input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #fdfaf8; /* Very soft warm tint */
+    border: 2px solid #e8d5c4;
+    border-radius: 10px; /* Modern rounding */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    color: var(--text);
+    font-family: inherit;
+}
+
 .password-wrapper input {
-    margin: 0;
-    padding-right: 40px; 
+    padding-right: 45px;
+}
+
+/* Bold focus state */
+.login-field input:focus {
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(201, 94, 52, 0.15);
 }
 
 .toggle-pw {
     position: absolute;
-    right: 12px;
+    right: 14px;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #a39184;
     transition: color 0.2s;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .toggle-pw:hover {
     color: var(--primary);
 }
 
-/* Links & Buttons */
 .forgot-link {
     display: block;
     text-align: right;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--primary);
     text-decoration: none;
     margin-bottom: 24px;
     font-weight: 600;
+    transition: color 0.2s;
 }
 
 .forgot-link:hover {
-    text-decoration: underline;
+    color: var(--primary-dark);
 }
 
+/* Big, pill-shaped login button */
 .btn-login {
-    width: 100%; 
+    width: 100%;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
+    padding: 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 30px; /* Pill shape is very trendy */
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 15px rgba(201, 94, 52, 0.3);
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201, 94, 52, 0.4);
 }
 
 /* =================================================

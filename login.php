@@ -56,9 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="auth-page">
 
 <nav class="auth-navbar">
-    <div class="auth-navbar-brand">
-        <span class="brand-icon">🍂</span> <span>AMAH MARY'S KITCHEN</span>
-    </div>
     <div class="auth-navbar-links">
         <a href="register.php" class="auth-nav-btn">Sign up</a>
         <a href="login.php" class="auth-nav-btn active">Log in</a>
@@ -67,7 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="login-wrapper">
     <div class="login-card">
+        <img src="logo.png" alt="Amah Mary's Kitchen Logo" class="login-logo">
         <h2 class="login-title">Welcome Back</h2>
+        <p class="login-subtitle">Please enter your details to sign in.</p>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger">
@@ -84,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="post" action="login.php">
             <div class="login-field">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                <input type="text" id="username" name="username" placeholder="e.g. Admin" required>
             </div>
             
             <div class="login-field">
