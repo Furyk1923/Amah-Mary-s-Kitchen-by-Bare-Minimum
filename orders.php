@@ -433,6 +433,7 @@ $total_pages = max(1, ceil($total_rows / $per_page));
 
     <div class="order-toolbar">
         <a href="orders.php?action=add" class="btn btn-add-new">+ Create New Order</a>
+        <button onclick="window.print()" class="btn btn-secondary">Print Orders</button>
         
 <form method="get" action="orders.php" class="search-bar">
     <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search by Customer or Order ID">
@@ -479,10 +480,23 @@ $total_pages = max(1, ceil($total_rows / $per_page));
             <td><?= htmlspecialchars($row['delivery_service'] ?? '-') ?></td>
             <td>₱ <?= number_format($row['total_amount'], 2) ?></td>
             <td><span class="status-badge status-<?= strtolower($row['status']) ?>"><?= strtoupper($row['status']) ?></span></td>
-            <td class="actions">
-                <a href="orders.php?action=edit&id=<?= $row['order_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
-                <a href="orders.php?action=delete&id=<?= $row['order_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this order and its items/delivery?')">Delete</a>
-            </td>
+            <<td class="actions">
+
+<a href="order_details.php?id=<?= $row['order_id'] ?>" class="btn btn-info btn-sm">
+View Details
+</a>
+
+<a href="orders.php?action=edit&id=<?= $row['order_id'] ?>" class="btn btn-primary btn-sm">
+Edit
+</a>
+
+<a href="orders.php?action=delete&id=<?= $row['order_id'] ?>" 
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this order and its items/delivery?')">
+Delete
+</a>
+
+</td>
         </tr>
         <?php endwhile; $lstmt->close(); ?>
         </tbody>

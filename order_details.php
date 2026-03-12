@@ -3,6 +3,7 @@ require_once 'config.php';
 require_once 'auth_check.php';
 
 $action  = $_GET['action'] ?? 'list';
+$order_view = $_GET['order_id'] ?? null;
 $errors  = [];
 $success = '';
 
@@ -135,8 +136,24 @@ if (isset($_GET['msg'])) {
         </thead>
         <tbody>
         <?php
-        $result = $mysqli->query("SELECT od.*, p.product_name FROM order_details od LEFT JOIN products p ON od.product_id = p.product_id ORDER BY od.order_detail_id DESC");
-        while ($row = $result->fetch_assoc()):
+if ($order_view) {
+    $stmt = $mysqli->prepare("
+        SELECT od.*, p.product_name 
+        FROM order_details od 
+        LEFT JOIN products p ON od.product_id = p.product_id
+        WHERE od.order_id = ?
+    ");
+    $stmt->bind_param("i", $order_view);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    $result = $mysqli->query("
+        SELECT od.*, p.product_name 
+        FROM order_details od 
+        LEFT JOIN products p ON od.product_id = p.product_id 
+        ORDER BY od.order_detail_id DESC
+    ");
+}        while ($row = $result->fetch_assoc()):
         ?>
         <tr>
             <td><?= $row['order_detail_id'] ?></td>
