@@ -217,7 +217,6 @@ table tbody tr:hover {
    AUTHENTICATION PAGES (PREMIUM UI)
    ================================================= */
 .auth-page {
-    /* Adds a beautiful background image with a warm autumn overlay */
     background: linear-gradient(rgba(242, 227, 207, 0.85), rgba(96, 59, 34, 0.85)), 
                 url('https://images.unsplash.com/photo-1556910103-1c02745a872f?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
@@ -225,12 +224,11 @@ table tbody tr:hover {
     min-height: 100vh;
 }
 
-/* Make the navbar transparent so it blends into the background image */
 .auth-navbar {
     background: transparent;
     padding: 20px 30px;
     display: flex;
-    justify-content: flex-end; /* Push links to the right */
+    justify-content: flex-end; 
     align-items: center;
 }
 
@@ -260,7 +258,6 @@ table tbody tr:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-/* Premium Glassmorphism Login Card */
 .login-wrapper {
     flex-grow: 1;
     display: flex;
@@ -270,18 +267,17 @@ table tbody tr:hover {
 }
 
 .login-card {
-    background: rgba(255, 255, 255, 0.98); /* Slightly transparent white */
-    backdrop-filter: blur(10px); /* Blurs the background behind the card */
+    background: rgba(255, 255, 255, 0.98); 
+    backdrop-filter: blur(10px); 
     width: 100%;
     max-width: 440px;
     padding: 40px 50px;
-    border-radius: 20px; /* Softer, modern corners */
+    border-radius: 20px; 
     box-shadow: 0 20px 50px rgba(64, 47, 37, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    text-align: center; /* Centers the logo and headers */
+    text-align: center; 
 }
 
-/* Centers the logo inside the card */
 .login-logo {
     width: 72px;
     height: 72px;
@@ -303,7 +299,6 @@ table tbody tr:hover {
     margin-bottom: 30px;
 }
 
-/* Modern, chunky input fields */
 .login-field {
     text-align: left;
     margin-bottom: 20px;
@@ -326,9 +321,9 @@ table tbody tr:hover {
 .login-field input {
     width: 100%;
     padding: 14px 16px;
-    background: #fdfaf8; /* Very soft warm tint */
+    background: #fdfaf8; 
     border: 2px solid #e8d5c4;
-    border-radius: 10px; /* Modern rounding */
+    border-radius: 10px; 
     font-size: 1rem;
     transition: all 0.3s ease;
     outline: none;
@@ -340,7 +335,6 @@ table tbody tr:hover {
     padding-right: 45px;
 }
 
-/* Bold focus state */
 .login-field input:focus {
     background: #ffffff;
     border-color: var(--primary);
@@ -378,14 +372,13 @@ table tbody tr:hover {
     color: var(--primary-dark);
 }
 
-/* Big, pill-shaped login button */
 .btn-login {
     width: 100%;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     padding: 14px;
     font-size: 1.05rem;
     font-weight: 700;
-    border-radius: 30px; /* Pill shape is very trendy */
+    border-radius: 30px; 
     letter-spacing: 0.5px;
     box-shadow: 0 6px 15px rgba(201, 94, 52, 0.3);
 }
