@@ -3,37 +3,37 @@
 <?xml-stylesheet type="text/xsl" href="products.xsl"?>
 <products>
     <product id="1">
-        <name>Chicken Adobo</name>
-        <description>Classic Filipino braised chicken in soy sauce, vinegar, and garlic</description>
-        <price>180.00</price>
+        <name>Chili Sauce</name>
+        <description>Classic chinese style chili sauce</description>
+        <price>150.00</price>
         <stock>50</stock>
         <status>Active</status>
     </product>
     <product id="2">
-        <name>Pork Sinigang</name>
-        <description>Savory sour soup with pork ribs and fresh vegetables</description>
-        <price>200.00</price>
+        <name>Pickled Sayote Big</name>
+        <description>Pickled sayote 300ml</description>
+        <price>300.00</price>
         <stock>35</stock>
         <status>Active</status>
     </product>
     <product id="3">
-        <name>Beef Caldereta</name>
-        <description>Rich tomato-based beef stew with potatoes and bell peppers</description>
-        <price>250.00</price>
+        <name>Pickeled Sayote Small</name>
+        <description>Pickled sayote 150ml</description>
+        <price>160.00</price>
         <stock>20</stock>
         <status>Active</status>
     </product>
     <product id="4">
-        <name>Lumpiang Shanghai</name>
-        <description>Crispy fried spring rolls filled with seasoned ground pork</description>
-        <price>120.00</price>
+        <name>Pickled Radish Big</name>
+        <description>Pickled Radish 300ml</description>
+        <price>350.00</price>
         <stock>80</stock>
         <status>Active</status>
     </product>
     <product id="5">
-        <name>Pancit Canton</name>
-        <description>Stir-fried egg noodles with vegetables and meat</description>
-        <price>150.00</price>
+        <name>Pickled Radish Small</name>
+        <description>Pickled radish 150ml</description>
+        <price>200.00</price
         <stock>45</stock>
         <status>Active</status>
     </product>
@@ -52,9 +52,9 @@
         <status>Active</status>
     </product>
     <product id="8">
-        <name>Lechon Kawali</name>
-        <description>Crispy deep-fried pork belly served with liver sauce</description>
-        <price>220.00</price>
+        <name>Spiced Vinegar</name>
+        <description>Spiced vinegar 100ml</description>
+        <price>100.00</price>
         <stock>0</stock>
         <status>Discontinued</status>
     </product>
