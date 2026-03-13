@@ -727,11 +727,11 @@ table tbody tr:hover {
     align-items: center;
     gap: 15px;
     margin-bottom: 24px;
-    background: #fdfaf8; /* Soft, warm background */
+    background: #fdfaf8; 
     padding: 16px 20px;
     border-radius: 8px;
     border: 1px solid var(--border);
-    flex-wrap: wrap; /* Allows stacking on very small mobile screens */
+    flex-wrap: wrap; 
 }
 
 .report-filter span {
@@ -739,8 +739,10 @@ table tbody tr:hover {
     color: var(--secondary);
 }
 
-.report-filter input[type="date"] {
-    width: auto; /* Overrides the global 100% width from standard forms */
+
+.report-filter input[type="date"],
+.report-filter input[type="month"] {
+    width: auto; 
     margin: 0;
     padding: 8px 14px;
 }
