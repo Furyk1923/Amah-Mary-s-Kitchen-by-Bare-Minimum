@@ -100,33 +100,31 @@ if ($generated) {
 <div class="container">
     <h2 class="page-title">SALES REPORTS</h2>
 
-    <!-- Date Range Filter -->
-    <!-- View Mode Tabs -->
-<div class="filter-bar" style="margin-bottom:10px;">
-    <a href="reports.php?view_mode=daily" class="filter-chip <?= $view_mode === 'daily' ? 'active' : '' ?>">[Daily Range]</a>
-    <a href="reports.php?view_mode=monthly" class="filter-chip <?= $view_mode === 'monthly' ? 'active' : '' ?>">[Monthly View]</a>
-</div>
+    <div class="filter-group">
+        <span>View By:</span>
+        <a href="reports.php?view_mode=daily" class="filter-link <?= $view_mode === 'daily' ? 'active' : '' ?>">Daily Range</a>
+        <a href="reports.php?view_mode=monthly" class="filter-link <?= $view_mode === 'monthly' ? 'active' : '' ?>">Monthly View</a>
+    </div>
 
-<?php if ($view_mode === 'daily'): ?>
-<form method="get" action="reports.php" class="report-filter">
-    <input type="hidden" name="view_mode" value="daily">
-    <span>Date Range:</span>
-    <input type="date" name="start_date" value="<?= htmlspecialchars($start_date) ?>" required>
-    <span>to</span>
-    <input type="date" name="end_date" value="<?= htmlspecialchars($end_date) ?>" required>
-    <button type="submit" class="btn-dark">GENERATE REPORT</button>
-</form>
-<?php else: ?>
-<form method="get" action="reports.php" class="report-filter">
-    <input type="hidden" name="view_mode" value="monthly">
-    <span>Month:</span>
-    <input type="month" name="month" value="<?= htmlspecialchars($month) ?>" required>
-    <button type="submit" class="btn-dark">GENERATE REPORT</button>
-</form>
-<?php endif; ?>
+    <?php if ($view_mode === 'daily'): ?>
+    <form method="get" action="reports.php" class="report-filter">
+        <input type="hidden" name="view_mode" value="daily">
+        <span>Date Range:</span>
+        <input type="date" name="start_date" value="<?= htmlspecialchars($start_date) ?>" required>
+        <span>to</span>
+        <input type="date" name="end_date" value="<?= htmlspecialchars($end_date) ?>" required>
+        <button type="submit" class="btn btn-primary">GENERATE REPORT</button>
+    </form>
+    <?php else: ?>
+    <form method="get" action="reports.php" class="report-filter">
+        <input type="hidden" name="view_mode" value="monthly">
+        <span>Month:</span>
+        <input type="month" name="month" value="<?= htmlspecialchars($month) ?>" required>
+        <button type="submit" class="btn btn-primary">GENERATE REPORT</button>
+    </form>
+    <?php endif; ?>
 
     <?php if ($generated || $generated_monthly): ?>
-    <!-- Summary -->
     <h3 class="section-heading">SUMMARY</h3>
     <div class="summary-box">
         <div class="summary-row">
@@ -143,62 +141,64 @@ if ($generated) {
         </div>
     </div>
 
-    <!-- Daily Breakdown -->
     <h3 class="section-heading">DAILY BREAKDOWNS</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Date</th><th>Orders</th><th>Revenue</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php if (empty($daily_data)): ?>
-            <tr><td colspan="3" style="text-align:center;">No data for this date range.</td></tr>
-        <?php else: ?>
-            <?php foreach ($daily_data as $day): ?>
+    <div class="table-responsive">
+        <table>
+            <thead>
             <tr>
-                <td><?= date('M d', strtotime($day['order_date'])) ?></td>
-                <td><?= $day['orders_count'] ?></td>
-                <td>₱ <?= number_format($day['revenue'], 2) ?></td>
+                <th>Date</th><th>Orders</th><th>Revenue</th>
             </tr>
-            <?php endforeach; ?>
-        <?php endif; ?>
-        </tbody>
+            </thead>
+            <tbody>
+            <?php if (empty($daily_data)): ?>
+                <tr><td colspan="3" style="text-align:center;">No data for this date range.</td></tr>
+            <?php else: ?>
+                <?php foreach ($daily_data as $day): ?>
+                <tr>
+                    <td><?= date('M d, Y', strtotime($day['order_date'])) ?></td>
+                    <td><?= $day['orders_count'] ?></td>
+                    <td>₱ <?= number_format($day['revenue'], 2) ?></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
         </table>
+    </div>
 
-<!-- Bar Chart -->
-<?php if (!empty($daily_data)): ?>
-<h3 class="section-heading">SALES CHART</h3>
-<canvas id="salesChart" style="max-width:100%; margin-top:20px;"></canvas>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script>
-var labels = <?= json_encode(array_column($daily_data, 'order_date')) ?>;
-var revenues = <?= json_encode(array_map('floatval', array_column($daily_data, 'revenue'))) ?>;
+    <?php if (!empty($daily_data)): ?>
+    <h3 class="section-heading">SALES CHART</h3>
+    <canvas id="salesChart" style="max-width:100%; margin-top:20px;"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <script>
+    var labels = <?= json_encode(array_map(function($d){ return date('M d', strtotime($d)); }, array_column($daily_data, 'order_date'))) ?>;
+    var revenues = <?= json_encode(array_map('floatval', array_column($daily_data, 'revenue'))) ?>;
 
-new Chart(document.getElementById('salesChart'), {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Revenue (₱)',
-            data: revenues,
-            backgroundColor: 'rgba(31, 73, 125, 0.7)',
-            borderColor: 'rgba(31, 73, 125, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: true }
+    new Chart(document.getElementById('salesChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Revenue (₱)',
+                data: revenues,
+                backgroundColor: 'rgba(201, 94, 52, 0.7)', 
+                borderColor: '#c95e34',
+                borderWidth: 2,
+                borderRadius: 4 
+            }]
         },
-        scales: {
-            y: { beginAtZero: true }
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: true }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
         }
-    }
-});
-</script>
-<?php endif; ?>
+    });
+    </script>
+    <?php endif; ?>
+    
     <?php else: ?>
     <p style="color:#888; margin-top:20px;">Select a date range and click GENERATE REPORT to view sales data.</p>
     <?php endif; ?>
