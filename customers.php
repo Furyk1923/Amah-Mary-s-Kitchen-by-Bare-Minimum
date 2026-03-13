@@ -109,6 +109,15 @@ if (isset($_GET['msg'])) {
 
     <?php else: ?>
     <a href="customers.php?action=add" class="btn btn-add-new">+ Add Customer</a>
+    <form method="get" action="customers.php" style="display:inline-block; margin-left:15px;">
+    <input type="text" name="search" placeholder="Search customer..." 
+           value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
+           style="padding:6px 12px; border:1px solid #ccc; border-radius:4px;">
+    <button type="submit" class="btn btn-primary">Search</button>
+    <?php if (!empty($_GET['search'])): ?>
+        <a href="customers.php" class="btn btn-secondary">Clear</a>
+    <?php endif; ?>
+</form>
     <table>
         <thead>
         <tr>
@@ -117,7 +126,13 @@ if (isset($_GET['msg'])) {
         </thead>
         <tbody>
         <?php
-        $result = $mysqli->query("SELECT * FROM customers ORDER BY customer_id DESC");
+        $search = trim($_GET['search'] ?? '');
+        if (!empty($search)) {
+            $safe = $mysqli->real_escape_string($search);
+            $result = $mysqli->query("SELECT * FROM customers WHERE full_name LIKE '%$safe%' OR contact_number LIKE '%$safe%' OR email LIKE '%$safe%' ORDER BY customer_id DESC");
+        } else {
+            $result = $mysqli->query("SELECT * FROM customers ORDER BY customer_id DESC");
+        }
         while ($row = $result->fetch_assoc()):
         ?>
         <tr>

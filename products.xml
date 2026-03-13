@@ -3,59 +3,31 @@
 <?xml-stylesheet type="text/xsl" href="products.xsl"?>
 <products>
     <product id="1">
-        <name>Chili Sauce</name>
-        <description>Classic chinese style chili sauce</description>
+        <name>Pickled Sayote</name>
+        <description>Homemade pickled sayote with a tangy and savory flavor</description>
         <price>150.00</price>
-        <stock>50</stock>
+        <stock>20</stock>
         <status>Active</status>
     </product>
     <product id="2">
-        <name>Pickled Sayote Big</name>
-        <description>Pickled sayote 300ml</description>
-        <price>300.00</price>
-        <stock>35</stock>
+        <name>Pickled Radish</name>
+        <description>Crispy pickled radish with a refreshing sour taste</description>
+        <price>150.00</price>
+        <stock>20</stock>
         <status>Active</status>
     </product>
     <product id="3">
-        <name>Pickeled Sayote Small</name>
-        <description>Pickled sayote 150ml</description>
-        <price>160.00</price>
+        <name>Chili Sauce</name>
+        <description>Amah Mary's signature homemade chili sauce, spicy and flavorful</description>
+        <price>200.00</price>
         <stock>20</stock>
         <status>Active</status>
     </product>
     <product id="4">
-        <name>Pickled Radish Big</name>
-        <description>Pickled Radish 300ml</description>
-        <price>350.00</price>
-        <stock>80</stock>
-        <status>Active</status>
-    </product>
-    <product id="5">
-        <name>Pickled Radish Small</name>
-        <description>Pickled radish 150ml</description>
-        <price>200.00</price
-        <stock>45</stock>
-        <status>Active</status>
-    </product>
-    <product id="6">
-        <name>Kare-Kare</name>
-        <description>Oxtail and tripe stew in rich peanut sauce</description>
-        <price>280.00</price>
-        <stock>15</stock>
-        <status>Low Stock</status>
-    </product>
-    <product id="7">
-        <name>Halo-Halo</name>
-        <description>Shaved ice dessert with mixed sweet beans, fruits, and leche flan</description>
-        <price>100.00</price>
-        <stock>60</stock>
-        <status>Active</status>
-    </product>
-    <product id="8">
         <name>Spiced Vinegar</name>
-        <description>Spiced vinegar 100ml</description>
+        <description>Homemade spiced vinegar perfect for dipping and cooking</description>
         <price>100.00</price>
-        <stock>0</stock>
-        <status>Discontinued</status>
+        <stock>20</stock>
+        <status>Active</status>
     </product>
 </products>
