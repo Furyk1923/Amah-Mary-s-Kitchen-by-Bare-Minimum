@@ -61,28 +61,8 @@ if ($action === 'edit' && isset($_GET['id'])) {
     $stmt->close();
 }
 
-$orders_list = $mysqli->query("SELECT order_id FROM orders ORDER BY order_id DESC");
-$status = $_GET['status'] ?? '';
-
-if ($status) {
-    $stmt = $mysqli->prepare("
-        SELECT d.*, o.customer_name
-        FROM delivery d
-        LEFT JOIN orders o ON d.order_id = o.order_id
-        WHERE d.delivery_status = ?
-        ORDER BY d.delivery_id DESC
-    ");
-    $stmt->bind_param("s", $status);
-    $stmt->execute();
-    $result = $stmt->get_result();
-} else {
-    $result = $mysqli->query("
-        SELECT d.*, o.customer_name
-        FROM delivery d
-        LEFT JOIN orders o ON d.order_id = o.order_id
-        ORDER BY d.delivery_id DESC
-    ");
-}
+$orders_list   = $mysqli->query("SELECT order_id FROM orders ORDER BY order_id DESC");
+$status_filter = $_GET['status'] ?? 'All';
 
 if (isset($_GET['msg'])) {
     $map = ['added'=>'Delivery added.','updated'=>'Delivery updated.','deleted'=>'Delivery deleted.'];
@@ -147,41 +127,52 @@ if (isset($_GET['msg'])) {
     </form>
 
     <?php else: ?>
-        <div class="filter-group">
-    <span>Filter:</span>
+    <a href="delivery.php?action=add" class="btn btn-success mb-20">+ Add Delivery</a>
 
-    <a class="filter-link" href="delivery.php">All</a>
-    <a class="filter-link" href="delivery.php?status=In-progress">In-progress</a>
-    <a class="filter-link" href="delivery.php?status=Completed">Completed</a>
-    <a class="filter-link" href="delivery.php?status=Delayed">Delayed</a>
-</div>
-    <a href="delivery.php?action=add" class="btn btn-add-new">+ Add Delivery</a>
+    <div class="filter-bar">
+        Filter:
+        <?php foreach (['All','In-progress','Completed','Delayed'] as $f): ?>
+            <a href="delivery.php?status=<?= $f ?>"
+               class="filter-chip <?= $status_filter === $f ? 'active' : '' ?>">[<?= $f ?>]</a>
+        <?php endforeach; ?>
+    </div>
+
     <table>
         <thead>
         <tr>
-<th>ID</th>
-<th>Order #</th>
-<th>Customer</th>
-<th>Service</th>
-<th>Status</th>
-<th>Date</th>
-<th>Actions</th>
-</tr>
+            <th>ID</th><th>Order #</th><th>Customer</th><th>Service</th><th>Status</th><th>Date</th><th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         <?php
-        $result = $mysqli->query("SELECT d.*, o.customer_name
-FROM delivery d
-LEFT JOIN orders o ON d.order_id = o.order_id ORDER BY delivery_id DESC");
+        if ($status_filter !== 'All') {
+            $safe = $mysqli->real_escape_string($status_filter);
+            $result = $mysqli->query("
+                SELECT d.*, c.full_name AS customer_name
+                FROM delivery d
+                LEFT JOIN orders o ON d.order_id = o.order_id
+                LEFT JOIN customers c ON o.customer_id = c.customer_id
+                WHERE d.delivery_status = '$safe'
+                ORDER BY d.delivery_id DESC
+            ");
+        } else {
+            $result = $mysqli->query("
+                SELECT d.*, c.full_name AS customer_name
+                FROM delivery d
+                LEFT JOIN orders o ON d.order_id = o.order_id
+                LEFT JOIN customers c ON o.customer_id = c.customer_id
+                ORDER BY d.delivery_id DESC
+            ");
+        }
         while ($row = $result->fetch_assoc()):
         ?>
         <tr>
             <td><?= $row['delivery_id'] ?></td>
-<td>#<?= $row['order_id'] ?></td>
-<td><?= htmlspecialchars($row['customer_name'] ?? 'N/A') ?></td>
-<td><?= htmlspecialchars($row['delivery_service']) ?></td>
-<td><?= htmlspecialchars($row['delivery_status']) ?></td>
-<td><?= htmlspecialchars($row['delivery_date'] ?? 'N/A') ?></td>
+            <td>#<?= $row['order_id'] ?></td>
+            <td><?= htmlspecialchars($row['customer_name'] ?? 'N/A') ?></td>
+            <td><?= htmlspecialchars($row['delivery_service']) ?></td>
+            <td><?= htmlspecialchars($row['delivery_status']) ?></td>
+            <td><?= htmlspecialchars($row['delivery_date'] ?? 'N/A') ?></td>
             <td class="actions">
                 <a href="delivery.php?action=edit&id=<?= $row['delivery_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                 <a href="delivery.php?action=delete&id=<?= $row['delivery_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this delivery?')">Delete</a>
