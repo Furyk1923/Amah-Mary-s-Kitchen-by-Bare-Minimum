@@ -64,28 +64,30 @@ if (isset($_GET['msg'])) {
     $map = ['added'=>'Customer added.','updated'=>'Customer updated.','deleted'=>'Customer deleted.'];
     $success = $map[$_GET['msg']] ?? '';
 }
+
+$search = trim($_GET['search'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customers - Amah Mary's Kitchen</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - Amah Mary's Kitchen</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <?php include 'navbar.php'; ?>
 
 <div class="container">
-<h2>Customers Management</h2>
+    <h2>Customers Management</h2>
 
-<?php if ($success): ?>
-<div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
-<?php endif; ?>
+    <?php if ($success): ?>
+        <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+    <?php endif; ?>
+    <?php if (!empty($errors)): ?>
+        <div class="alert alert-danger"><?php foreach ($errors as $e) echo htmlspecialchars($e).'<br>'; ?></div>
+    <?php endif; ?>
 
-<<<<<<< HEAD
     <?php if ($action === 'add' || $action === 'edit'): ?>
     <form method="post" action="customers.php?action=<?= $action ?>" class="crud-form">
         <?php if ($edit_data): ?>
@@ -108,16 +110,19 @@ if (isset($_GET['msg'])) {
     </form>
 
     <?php else: ?>
-    <a href="customers.php?action=add" class="btn btn-add-new">+ Add Customer</a>
-    <form method="get" action="customers.php" style="display:inline-block; margin-left:15px;">
-    <input type="text" name="search" placeholder="Search customer..." 
-           value="<?= htmlspecialchars($_GET['search'] ?? '') ?>"
-           style="padding:6px 12px; border:1px solid #ccc; border-radius:4px;">
-    <button type="submit" class="btn btn-primary">Search</button>
-    <?php if (!empty($_GET['search'])): ?>
-        <a href="customers.php" class="btn btn-secondary">Clear</a>
-    <?php endif; ?>
-</form>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
+        <a href="customers.php?action=add" class="btn btn-add-new">+ Add Customer</a>
+        <form method="get" action="customers.php" style="display:flex; gap:8px; align-items:center;">
+            <input type="text" name="search" placeholder="Search customer..."
+                   value="<?= htmlspecialchars($search) ?>"
+                   style="padding:6px 12px; border:1px solid #ccc; border-radius:4px;">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <?php if (!empty($search)): ?>
+                <a href="customers.php" class="btn btn-secondary">Clear</a>
+            <?php endif; ?>
+        </form>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -126,7 +131,6 @@ if (isset($_GET['msg'])) {
         </thead>
         <tbody>
         <?php
-        $search = trim($_GET['search'] ?? '');
         if (!empty($search)) {
             $safe = $mysqli->real_escape_string($search);
             $result = $mysqli->query("SELECT * FROM customers WHERE full_name LIKE '%$safe%' OR contact_number LIKE '%$safe%' OR email LIKE '%$safe%' ORDER BY customer_id DESC");
@@ -150,108 +154,7 @@ if (isset($_GET['msg'])) {
         </tbody>
     </table>
     <?php endif; ?>
-=======
-<?php if (!empty($errors)): ?>
-<div class="alert alert-danger">
-<?php foreach ($errors as $e) echo htmlspecialchars($e).'<br>'; ?>
->>>>>>> 623e579c09024aaa9023f8b0008bdd53f0c74a1c
 </div>
-<?php endif; ?>
-
-<?php if ($action === 'add' || $action === 'edit'): ?>
-
-<form method="post" action="customers.php?action=<?= $action ?>" class="crud-form">
-
-<?php if ($edit_data): ?>
-<input type="hidden" name="customer_id" value="<?= $edit_data['customer_id'] ?>">
-<?php endif; ?>
-
-<label>Full Name
-<input type="text" name="full_name" value="<?= htmlspecialchars($edit_data['full_name'] ?? '') ?>" required>
-</label>
-
-<label>Contact Number
-<input type="text" name="contact_number" value="<?= htmlspecialchars($edit_data['contact_number'] ?? '') ?>">
-</label>
-
-<label>Address
-<textarea name="address"><?= htmlspecialchars($edit_data['address'] ?? '') ?></textarea>
-</label>
-
-<label>Email
-<input type="email" name="email" value="<?= htmlspecialchars($edit_data['email'] ?? '') ?>">
-</label>
-
-<button type="submit" class="btn btn-primary"><?= $edit_data ? 'Update' : 'Add' ?> Customer</button>
-<a href="customers.php" class="btn btn-secondary">Cancel</a>
-
-</form>
-
-<?php else: ?>
-
-<a href="customers.php?action=add" class="btn btn-add-new">+ Add Customer</a>
-
-<br><br>
-
-<input type="text" id="searchCustomer" placeholder="Search customers..."
-style="padding:8px;width:250px;">
-
-<table id="customerTable">
-
-<thead>
-<tr>
-<th>ID</th>
-<th>Full Name</th>
-<th>Contact</th>
-<th>Address</th>
-<th>Email</th>
-<th>Actions</th>
-</tr>
-</thead>
-
-<tbody>
-
-<?php
-$result = $mysqli->query("SELECT * FROM customers ORDER BY customer_id DESC");
-while ($row = $result->fetch_assoc()):
-?>
-
-<tr>
-<td><?= $row['customer_id'] ?></td>
-<td><?= htmlspecialchars($row['full_name']) ?></td>
-<td><?= htmlspecialchars($row['contact_number']) ?></td>
-<td><?= htmlspecialchars($row['address']) ?></td>
-<td><?= htmlspecialchars($row['email']) ?></td>
-
-<td class="actions">
-<a href="customers.php?action=edit&id=<?= $row['customer_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
-<a href="customers.php?action=delete&id=<?= $row['customer_id'] ?>" class="btn btn-danger btn-sm"
-onclick="return confirm('Delete this customer?')">Delete</a>
-</td>
-
-</tr>
-
-<?php endwhile; ?>
-
-</tbody>
-</table>
-
-<?php endif; ?>
-
-</div>
-
-<script>
-document.getElementById("searchCustomer").addEventListener("keyup", function() {
-let filter = this.value.toLowerCase();
-let rows = document.querySelectorAll("#customerTable tbody tr");
-
-rows.forEach(row => {
-let text = row.innerText.toLowerCase();
-row.style.display = text.includes(filter) ? "" : "none";
-});
-});
-</script>
 
 </body>
 </html>
-
