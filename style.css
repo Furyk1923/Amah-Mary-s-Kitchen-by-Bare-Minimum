@@ -771,6 +771,17 @@ table tbody tr:hover {
     color: #8a2525;
 }
 
+/* Delivery-Specific Badges */
+.status-in-progress {
+    background: #fcebc4;
+    color: #8a5a19;
+}
+
+.status-delayed {
+    background: #f6dada; 
+    color: #8a2525;
+}
+
 /* =================================================
    FORMS
    ================================================= */
