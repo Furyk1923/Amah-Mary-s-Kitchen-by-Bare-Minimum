@@ -480,7 +480,7 @@ $total_pages = max(1, ceil($total_rows / $per_page));
             <td><?= htmlspecialchars($row['delivery_service'] ?? '-') ?></td>
             <td>₱ <?= number_format($row['total_amount'], 2) ?></td>
             <td><span class="status-badge status-<?= strtolower($row['status']) ?>"><?= strtoupper($row['status']) ?></span></td>
-            <<td class="actions">
+            <td class="actions">
 
 <a href="order_details.php?id=<?= $row['order_id'] ?>" class="btn btn-info btn-sm">
 View Details
